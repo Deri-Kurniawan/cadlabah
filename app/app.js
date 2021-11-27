@@ -1,14 +1,15 @@
 const express = require('express');
+const Settings = require('./settings');
 const Routes = require('./routes');
 const Server = require('./server');
-const Settings = require('./settings');
+
 const app = express();
 
 const application = {
-  run: (app, express) => {
-    Server.init(app);
-    Routes.init(app);
-    Settings.init(app, express);
+  run: (appInstance, expressInstance) => {
+    Settings.init(appInstance, expressInstance);
+    Routes.init(appInstance);
+    Server.init(appInstance);
   },
 };
 

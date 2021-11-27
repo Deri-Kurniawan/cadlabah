@@ -1,4 +1,4 @@
-const { homeHandler, pageNotFoundHandler } = require("./handlers");
+const { homeHandler, pageNotFoundHandler } = require('./handlers');
 
 const Routes = {
   init: (app) => {
