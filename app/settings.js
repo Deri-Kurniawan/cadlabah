@@ -1,5 +1,9 @@
+const session = require('express-session');
+const flash = require('express-flash');
 const cors = require('cors');
 const path = require('path');
+const passport = require('passport');
+const { timeHelper } = require('./helpers');
 
 const Settings = {
   init: (app, express) => {
@@ -10,6 +14,17 @@ const Settings = {
     app.use(express.static(path.join(__dirname, '/node_modules/')));
     app.use(express.static('public'));
     app.use(express.json());
+
+    app.use(session({
+      cookie: { maxAge: timeHelper.day * 7 },
+      secret: 'wqeoijwdfyawd',
+      resave: true,
+      saveUninitialized: true,
+    }));
+
+    app.use(flash());
+    app.use(passport.initialize());
+    app.use(passport.session());
   },
 };
 

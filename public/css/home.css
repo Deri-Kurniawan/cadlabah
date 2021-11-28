@@ -1,0 +1,55 @@
+body {
+  overflow-x: hidden;
+}
+
+.analytic {
+  font-size: 1em;
+}
+
+.analytic-icon {
+  transition: all .3s ease-in-out;
+  font-size: 3em;
+}
+
+.analytic:hover .analytic-icon {
+  transition: all .3s ease-in-out;
+  transform: scale(1.2);
+}
+
+.analytic-value,
+.analytic-title {
+  font-size: 1.5em;
+}
+
+/*
+  Responsive
+*/
+
+@media only screen and (max-width: 700px) {
+
+  .analytic-icon {
+    font-size: 2.5em;
+  }
+
+  .analytic-value {
+    font-size: 1em;
+  }
+
+  .analytic-title {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .analytic-icon {
+    font-size: 1.5em;
+  }
+
+  .analytic-value {
+    font-size: .8em;
+  }
+
+  .analytic-title {
+    font-size: .8em;
+  }
+}
