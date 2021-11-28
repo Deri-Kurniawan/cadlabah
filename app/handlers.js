@@ -21,7 +21,7 @@ const postsCreateHandler = (req, res) => {
 
 const logoutHandler = (req, res) => {
   req.logout();
-  res.redirect('back');
+  res.redirect('/');
 };
 
 const authPlatformSuccessHandler = (req, res) => {
