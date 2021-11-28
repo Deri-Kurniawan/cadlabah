@@ -1,6 +1,6 @@
 const authCheckerMiddleware = (req, res, next) => {
   if (!req.isAuthenticated()) {
-    res.redirect('/');
+    res.redirect('back');
   } else {
     next();
   }

@@ -21,7 +21,7 @@ const postsCreateHandler = (req, res) => {
 
 const logoutHandler = (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('back');
 };
 
 const authPlatformSuccessHandler = (req, res) => {
@@ -31,7 +31,7 @@ const authPlatformSuccessHandler = (req, res) => {
     throw new Error('URL HAS MODIFIED');
   }
 
-  res.redirect('/');
+  res.redirect('back');
 };
 
 const pageNotFoundHandler = (req, res) => {
