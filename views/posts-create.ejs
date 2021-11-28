@@ -1,0 +1,87 @@
+<%- include('templates/header') %>
+<script src="https://cdn.tiny.cloud/1/mqiw12ifoks1anqawa00p0o8ef5mfk3sz3uhpb003z954pig/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<%- include('templates/navbar') %>
+<main>
+  <div class="container my-4">
+    <h2>Buat Postingan</h2>
+    <form action="" method="post">
+      <input type="text" name="accountId" value="<%= Number(user.id) %>" hidden>
+      <div class="form-floating mb-3">
+        <input type="text" name="title" id="title" class="form-control" value="" placeholder="Judul">
+        <label for="title">Judul</label>
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="file" class="form-control" id="image">
+        <label class="input-group-text" for="image">Gambar</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea name="description" id="description" class="form-control" value="" placeholder="Keterangan"
+          style="height: 10em"></textarea>
+        <label for="Keterangan">Keterangan</label>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+          <div class="form-floating mb-3">
+            <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value="" placeholder="Kontak Whatsapp">
+            <label for="whatsapp">Kontak Whatsapp</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+          <div class="form-floating mb-3">
+            <input type="tel" name="phone" id="phone" class="form-control" value="" placeholder="Telepon Seluler">
+            <label for="phone">Telepon Seluler</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+          <div class="form-floating mb-3">
+            <input type="email" name="email" id="email" class="form-control" value="" placeholder="Email">
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-floating mb-3">
+            <select name="category" id="caategory" class="form-control" value="" placeholder="Kategori">
+              <option value="">Pilih Kategori Barang</option>
+              <option value="electronic">Elektronik</option>
+              <option value="accessories">Aksesoris</option>
+            </select>
+            <label for="category">Kategori</label>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-floating mb-3">
+            <select name="goodsStatus" id="goodsStatus" class="form-control" value="" placeholder="Kategori">
+              <option value="">Pilih Status Barang</option>
+              <option value="founded">Temuan</option>
+              <option value="missing">Hilang</option>
+            </select>
+            <label for="goodsStatus">Status</label>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-outline-success col-12 col-lg-6 offset-lg-3">Posting</button>
+
+    </form>
+  </div>
+</main>
+
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    toolbar_mode: 'floating',
+  });
+</script>
+<%- include('templates/footer') %>

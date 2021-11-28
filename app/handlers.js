@@ -12,6 +12,13 @@ const postsHandler = (req, res) => {
   });
 };
 
+const postsCreateHandler = (req, res) => {
+  res.render('posts-create', {
+    title: 'Buat Postingan',
+    user: req.user,
+  });
+};
+
 const logoutHandler = (req, res) => {
   req.logout();
   res.redirect('/');
@@ -36,6 +43,7 @@ const pageNotFoundHandler = (req, res) => {
 module.exports = {
   homeHandler,
   postsHandler,
+  postsCreateHandler,
   logoutHandler,
   authPlatformSuccessHandler,
   pageNotFoundHandler,
