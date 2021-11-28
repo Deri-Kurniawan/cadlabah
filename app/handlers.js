@@ -1,13 +1,30 @@
 const homeHandler = (req, res) => {
   res.render('home', {
     title: 'Home',
+    user: req.user,
   });
 };
 
 const postsHandler = (req, res) => {
   res.render('posts', {
     title: 'Postingan',
+    user: req.user,
   });
+};
+
+const logoutHandler = (req, res) => {
+  req.logout();
+  res.redirect('/');
+};
+
+const authPlatformSuccessHandler = (req, res) => {
+  const { platform } = req.query;
+
+  if (!platform) {
+    throw new Error('URL HAS MODIFIED');
+  }
+
+  res.redirect('/');
 };
 
 const pageNotFoundHandler = (req, res) => {
@@ -19,5 +36,7 @@ const pageNotFoundHandler = (req, res) => {
 module.exports = {
   homeHandler,
   postsHandler,
+  logoutHandler,
+  authPlatformSuccessHandler,
   pageNotFoundHandler,
 };

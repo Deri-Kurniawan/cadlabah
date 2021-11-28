@@ -18,9 +18,11 @@
         <div class="dropdown btn-group">
           <button type="button" class="btn btn-outline-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
             data-bs-display="static" aria-expanded="false">
-            <i class="fas fa-user"></i> Tamu
+            <i class="fas fa-user"></i>
+            <%= user ? user.displayName : 'Tamu' %>
           </button>
           <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-lg-end shadow" aria-labelledby="dropdownMenuLink">
+            <% if (!user) { %>
             <li>
               <a class="dropdown-item" href="/auth/google">
                 <i class="fab fa-google text-primary"></i> Masuk Dengan Google
@@ -31,6 +33,7 @@
                 <i class="fab fa-github text-dark"></i> Masuk Dengan Github
               </a>
             </li>
+            <% } else { %>
             <!-- logout modal trigger -->
             <li>
               <a class="dropdown-item" href="/logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
@@ -38,6 +41,7 @@
               </a>
             </li>
             <!-- end logout modal trigger -->
+            <% } %>
           </ul>
         </div>
       </div>
