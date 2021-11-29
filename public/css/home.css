@@ -2,6 +2,78 @@ body {
   overflow-x: hidden;
 }
 
+.three-circle {
+  display: flex;
+  justify-content: center;
+}
+
+.three-circle div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: .3em;
+}
+
+.three-circle div:nth-child(1) {
+  background-color: #FF5C5C;
+  animation: circle-one 1.1s infinite;
+  -webkit-animation: circle-one 1.1s infinite;
+}
+
+.three-circle div:nth-child(2) {
+  background-color: #FFDF58;
+  animation: circle-two 1s infinite;
+  -webkit-animation: circle-two 1s infinite;
+}
+
+.three-circle div:nth-child(3) {
+  background-color: #7ED956;
+  animation: circle-three 1s infinite;
+  -webkit-animation: circle-three 0.9s infinite;
+}
+
+@keyframes circle-one {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes circle-two {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes circle-three {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .analytic {
   font-size: 1em;
 }
