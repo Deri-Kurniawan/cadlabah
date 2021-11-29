@@ -8,4 +8,4 @@ const timeHelper = {
   year: 1000 * 60 * 60 * 24 * 30 * 12,
 };
 
-module.exports = { timeHelper };
+module.exports = timeHelper;
