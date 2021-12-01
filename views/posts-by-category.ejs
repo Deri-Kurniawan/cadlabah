@@ -12,9 +12,9 @@
         <% if(posts.length > 0) { %>
         <h2 class="my-3 text-center">Postingan berdasarkan kategori <b><%= categoryName %></b></h2>
         <% posts.forEach((post) => { %>
-        <div class="card mb-3 shadow" tabindex="0" id="1">
+        <div class="card mb-3 shadow" tabindex="0">
           <div class="card-header">
-            <h3 class="card-title my-2" id="post1">
+            <h3 class="card-title my-2">
               [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= title %>
             </h3>
             <p class="card-text">
