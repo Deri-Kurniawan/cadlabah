@@ -9,125 +9,81 @@
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <!-- post item -->
+        <% if(posts.length > 0) { %>
+        <% posts.forEach((post) => { %>
         <div class="card mb-3 shadow" tabindex="0" id="1">
           <div class="card-header">
-            <h2 class="card-title my-2" id="post1">[Hilang] Handphone Samsung Galaxy S9</h2>
+            <h2 class="card-title my-2" id="post1">
+              [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= title %>
+            </h2>
             <p class="card-text">
               <div class="my-2">
-                <a href="posts/category/electronics">
-                  <div class="badge bg-primary" aria-label="kategori elektronik">
-                    Elektronik
+                <a href="posts/category/<%= post.category %>">
+                  <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
+                    <%= post.category %>
                   </div>
                 </a>
               </div>
               <small class="text-muted">
-                Diposting oleh <i class="fas fa-user"></i> Deri Kurniawan pada 26 November 2021 pukul 15:30
+                Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
+                <%= new Date(post.createdAt).toLocaleString() %>
               </small>
             </p>
           </div>
           <div class="ratio ratio-16x9">
-            <img class="img-fluid img-thumbnail lazyload"
-              data-src="https://cdn.idntimes.com/content-images/community/2018/04/samsung-galaxy-s9-85-1-980x620-88e4c6e95cf484b9d5e58ba11419ad66.jpg"
-              class="card-img-top" alt="gambar">
+            <img class="img-fluid img-thumbnail lazyload" data-src="<%= post.image %>" class="card-img-top"
+              alt="gambar">
           </div>
           <div class="card-body">
             <p class="card-text">
-              Hallo warga sukabumi. saya kehilangan handphone samsung S9 Berwarna Hitam di area sukabumi kota, lebih
-              tepatnya dago sukabumi. jika ada yang menemukan saya kasih imbalan, terimakasih.
+              <%= post.description %>
             </p>
 
-            <p><b>Merasa Menemukan Barangnya?</b></p>
+            <p><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></p>
             <div class="row">
               <div class="col-6">
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  data-bs-target="#collapseContact<%= post.id %>" aria-expanded="false"
+                  aria-controls="collapseContact<%= post.id %>">
                   <i class="fas fa-contact-book"></i> Lihat Kontak
                 </button>
               </div>
               <div class="col-6">
-                <button class="col-12 btn btn-outline-success"><i class="fas fa-share"></i> Bagikan</button>
+                <button class="col-12 btn btn-outline-success" data-postID="<%= post.id %>"><i
+                    class="fas fa-share share-button"></i>Bagikan</button>
               </div>
             </div>
 
-            <div class="collapse" id="collapseExample">
+            <div class="collapse" id="collapseContact<%= post.id %>">
               <div class="card card-body shadow">
                 <h5>Kontak</h5>
                 <div class="row">
+                  <% if(post.contacts.whatsapp && post.contacts.whatsapp !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-success"
-                    href="https://api.whatsapp.com/send?phone=+6280000000000" target="_blank">
+                    href="https://api.whatsapp.com/send?phone=<%= post.contacts.whatsapp %>" target="_blank">
                     <i class="fab fa-whatsapp"></i> Whatsapp
                   </a>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:foo@example.com">
+                  <% } // end of if %>
+                  <% if(post.contacts.email && post.contacts.whatsapp !== '') {%>
+                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>">
                     <i class="fas fa-mail-bulk"></i> Email
                   </a>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:+6280000000000">
+                  <% } // end of if %>
+                  <% if(post.contacts.phone && post.contacts.whatsapp !== '') {%>
+                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>">
                     <i class="fas fa-phone"></i> Telepon
                   </a>
+                  <% } // end of if%>
                 </div>
               </div>
             </div>
 
           </div>
         </div>
-
-        <div class="card mb-3 shadow" tabindex="0" id="2">
-          <div class="card-header">
-            <h3 class="card-title my-2">[Temuan] Handphone Samsung Galaxy S9</h3>
-            <div class="my-2">
-              <a href="posts/category/electronics">
-                <div class="badge bg-primary" aria-label="kategori elektronik">
-                  Elektronik
-                </div>
-              </a>
-            </div>
-            <p class="card-text"><small class="text-muted">Diposting oleh <i class="fas fa-user"></i> Deri Kurniawan
-                pada 26 November 2021 pukul 21:00</small></p>
-          </div>
-          <div class="ratio ratio-16x9">
-            <img class="img-fluid img-thumbnail lazyload"
-              data-src="https://cdn.idntimes.com/content-images/community/2018/04/samsung-galaxy-s9-85-1-980x620-88e4c6e95cf484b9d5e58ba11419ad66.jpg"
-              class="card-img-top" alt="gambar">
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              Hallo warga sukabumi. saya menemukan handphone samsung S9 Berwarna Hitam di area sukabumi kota, lebih
-              tepatnya dago sukabumi. jika ada yang merasa kehilangan dan tahu kata sandi handphone ini maka anda
-              pemiliknya, sekian terimakasih.
-            </p>
-
-            <p><b>Merasa itu barangmu?</b></p>
-            <div class="row">
-              <div class="col-6">
-                <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="fas fa-contact-book"></i> Lihat Kontak
-                </button>
-              </div>
-              <div class="col-6">
-                <button class="col-12 btn btn-outline-success"><i class="fas fa-share"></i> Bagikan</button>
-              </div>
-            </div>
-
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body shadow">
-                <h5>Kontak</h5>
-                <div class="row">
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-success"
-                    href="https://api.whatsapp.com/send?phone=+6280000000000" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Whatsapp
-                  </a>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:foo@example.com">
-                    <i class="fas fa-mail-bulk"></i> Email
-                  </a>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:+6285720959031">
-                    <i class="fas fa-phone"></i> Telepon
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <% }); // end of foreach %>
+        <% } else { %>
+        <h1>Posts is Empty</h1>
+        <% } // end of else %>
         <!-- end of post item -->
       </div>
       <%- include('templates/posts/sidebar') %>

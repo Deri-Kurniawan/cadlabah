@@ -1,5 +1,7 @@
 const { default: axios } = require('axios');
+const { getPosts } = require('../data/posts-data-source');
 const { getUsers } = require('../data/usersDataSource');
+
 const API_ENDPOINT = require('../globals/api-endpoint');
 
 const homeHandler = (req, res) => {
@@ -10,9 +12,12 @@ const homeHandler = (req, res) => {
 };
 
 const postsHandler = (req, res) => {
-  res.render('posts', {
-    title: 'Postingan',
-    user: req.user,
+  getPosts((posts) => {
+    res.render('posts', {
+      title: 'Postingan',
+      user: req.user,
+      posts,
+    });
   });
 };
 
