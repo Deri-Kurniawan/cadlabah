@@ -3,7 +3,7 @@ const flash = require('express-flash');
 const cors = require('cors');
 const path = require('path');
 const passport = require('passport');
-const timeHelper = require('./helpers/timeHelper');
+const timeHelper = require('./helpers/time-helper');
 
 const Settings = {
   init: (app, express) => {

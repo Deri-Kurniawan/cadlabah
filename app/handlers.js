@@ -1,5 +1,8 @@
 const { default: axios } = require('axios');
+const { getPosts } = require('../data/posts-data-source');
 const { getUsers } = require('../data/usersDataSource');
+const MailHelper = require('./helpers/mail-helper');
+
 const API_ENDPOINT = require('../globals/api-endpoint');
 
 const homeHandler = (req, res) => {
@@ -10,9 +13,12 @@ const homeHandler = (req, res) => {
 };
 
 const postsHandler = (req, res) => {
-  res.render('posts', {
-    title: 'Postingan',
-    user: req.user,
+  getPosts((posts) => {
+    res.render('posts', {
+      title: 'Postingan',
+      user: req.user,
+      posts,
+    });
   });
 };
 
@@ -68,6 +74,12 @@ const authPlatformSuccessHandler = async (req, res) => {
 
       if (!userExists) {
         axios.post(API_ENDPOINT.postUser(), setUser);
+
+        // Send email for first time registration
+        MailHelper.sendGreetingsFirstTime(MailHelper.mailTransporter(), {
+          to: setUser.email,
+          fullName: setUser.fullName,
+        });
       }
     });
   } else {
