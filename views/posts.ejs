@@ -10,25 +10,26 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <!-- post item -->
         <% if(posts.length > 0) { %>
+        <h2 class="my-3 text-center">Semua Postingan</b></h2>
         <% posts.forEach((post) => { %>
         <div class="card mb-3 shadow" tabindex="0" id="1">
           <div class="card-header">
-            <h2 class="card-title my-2" id="post1">
+            <h3 class="card-title my-2" id="post1">
               [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= title %>
-            </h2>
-            <p class="card-text">
-              <div class="my-2">
-                <a href="posts/category/<%= post.category %>">
-                  <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
-                    <%= post.category %>
-                  </div>
-                </a>
-              </div>
-              <small class="text-muted">
-                Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
-                <%= new Date(post.createdAt).toLocaleString() %>
-              </small>
-            </p>
+              </h2>
+              <p class="card-text">
+                <div class="my-2">
+                  <a href="posts/category/<%= post.category %>">
+                    <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
+                      <%= post.category %>
+                    </div>
+                  </a>
+                </div>
+                <small class="text-muted">
+                  Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
+                  <%= new Date(post.createdAt).toLocaleString() %>
+                </small>
+              </p>
           </div>
           <div class="ratio ratio-16x9">
             <img class="img-fluid img-thumbnail lazyload" data-src="<%= post.image %>" class="card-img-top"
@@ -39,7 +40,7 @@
               <%= post.description %>
             </p>
 
-            <p><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></p>
+            <h4><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></h4>
             <div class="row">
               <div class="col-6">
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
