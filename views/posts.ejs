@@ -130,63 +130,7 @@
         </div>
         <!-- end of post item -->
       </div>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-        <!-- accordeon -->
-        <div class="accordion shadow bg-white sticky-top" style="top: 5em; z-index: 1;"
-          id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-h1">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-c1" aria-expanded="true" aria-controls="panelsStayOpen-c1">
-                Kategori
-              </button>
-            </h2>
-            <div id="panelsStayOpen-c1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-h1">
-              <div class="accordion-body">
-                <a class="btn btn-outline-primary text-decoration-none text-center d-block mb-3"
-                  href="/posts/category/accessories">Aksesoris</a>
-                <a class="btn btn-outline-primary text-decoration-none text-center d-block mb-3"
-                  href="/posts/category/electronics">Elektronik</a>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-h2">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-c2" aria-expanded="false" aria-controls="panelsStayOpen-c2">
-                Edukasi
-              </button>
-            </h2>
-            <div id="panelsStayOpen-c2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-h2">
-              <div class="accordion-body">
-                <a class="btn btn-outline-info text-decoration-none text-center d-block my-2"
-                  href="/edu/tips-dan-trik">Tips
-                  &
-                  Trik</a>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="panelsStayOpen-h3">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-c3" aria-expanded="false" aria-controls="panelsStayOpen-c3">
-                Kebijakan
-              </button>
-            </h3>
-            <div id="panelsStayOpen-c3" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-h3">
-              <div class="accordion-body">
-                <a class="btn btn-outline-warning text-decoration-none text-center d-block my-2"
-                  href="/cadlabah/privacy-and-policy">Kebijakan Pribadi</a>
-              </div>
-            </div>
-          </div>
-
-          <a class="btn btn-outline-success col-10 offset-1 my-3" href="/posts/create">
-            <i class="fas fa-paper-plane"></i> Buat Postingan
-          </a>
-        </div>
-        <!-- end of accordeon -->
-      </div>
+      <%- include('templates/posts/sidebar') %>
     </div>
   </div>
 </main>
