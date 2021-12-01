@@ -22,6 +22,20 @@ const postsHandler = (req, res) => {
   });
 };
 
+const postsByCategoryHandler = (req, res) => {
+  getPosts((posts) => {
+    const postFilteredByCategory = posts.filter((post) => (
+      post.category === req.params.categoryName
+    ));
+    res.render('posts-by-category', {
+      title: 'Postingan',
+      user: req.user,
+      posts: postFilteredByCategory,
+      categoryName: req.params.categoryName,
+    });
+  });
+};
+
 const postsCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
@@ -97,6 +111,7 @@ const pageNotFoundHandler = (req, res) => {
 module.exports = {
   homeHandler,
   postsHandler,
+  postsByCategoryHandler,
   postsCreateHandler,
   logoutHandler,
   authPlatformSuccessHandler,

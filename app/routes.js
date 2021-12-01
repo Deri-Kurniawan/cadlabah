@@ -1,6 +1,7 @@
 const {
   homeHandler,
   postsHandler,
+  postsByCategoryHandler,
   postsCreateHandler,
   logoutHandler,
   authPlatformSuccessHandler,
@@ -16,6 +17,7 @@ const Routes = {
     app.get('/', homeHandler);
     app.get('/home', homeHandler);
     app.get('/posts', postsHandler);
+    app.get('/posts/category/:categoryName', postsByCategoryHandler);
     app.get('/posts/create', authCheckerMiddleware, postsCreateHandler);
     app.get('/auth/google', authPlatformMiddleware, google.request);
     app.get('/auth/github', authPlatformMiddleware, github.request);
