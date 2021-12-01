@@ -58,22 +58,28 @@
               <div class="card card-body shadow">
                 <h5>Kontak</h5>
                 <div class="row">
-                  <% if(post.contacts.whatsapp && post.contacts.whatsapp !== '') {%>
+                  <% const { whatsapp, email, phone } = post.contacts; %>
+                  <% if(whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
+                  <% if(whatsapp && whatsapp !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-success"
-                    href="https://api.whatsapp.com/send?phone=<%= post.contacts.whatsapp %>" target="_blank">
+                    href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
                     <i class="fab fa-whatsapp"></i> Whatsapp
                   </a>
                   <% } // end of if %>
-                  <% if(post.contacts.email && post.contacts.whatsapp !== '') {%>
+                  <% if(email && email !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>">
                     <i class="fas fa-mail-bulk"></i> Email
                   </a>
                   <% } // end of if %>
-                  <% if(post.contacts.phone && post.contacts.whatsapp !== '') {%>
+                  <% if(phone && phone !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>">
                     <i class="fas fa-phone"></i> Telepon
                   </a>
-                  <% } // end of if%>
+                  <% } // end of if %>
+                  <% } else { // else contact length %>
+                  <p class="m-2"><%= post.author %> Tidak mencantumkan kontak</p>
+
+                  <% } //end of if contact length %>
                 </div>
               </div>
             </div>
