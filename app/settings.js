@@ -1,5 +1,6 @@
 const session = require('express-session');
 const flash = require('express-flash');
+const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const path = require('path');
 const passport = require('passport');
@@ -25,6 +26,11 @@ const Settings = {
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.use(fileUpload({
+      useTempFiles: true,
+      tempFileDir: '/tmp/',
+    }));
   },
 };
 
