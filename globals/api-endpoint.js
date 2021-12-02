@@ -8,7 +8,7 @@ const API_ENDPOINT = {
   deleteUser: (id) => `${BASE_URL_API}users/${id}`,
   getPosts: `${BASE_URL_API}posts`,
   getPost: (id) => `${BASE_URL_API}posts/${id}`,
-  postPost: () => `${BASE_URL_API}posts`,
+  postPosts: () => `${BASE_URL_API}posts`,
   putPost: (id) => `${BASE_URL_API}posts/${id}`,
   deletePost: (id) => `${BASE_URL_API}posts/${id}`,
 };
