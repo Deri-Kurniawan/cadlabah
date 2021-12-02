@@ -1,5 +1,6 @@
+const path = require('path');
 const { default: axios } = require('axios');
-const { getPosts } = require('../data/posts-data-source');
+const { getPosts, postPosts } = require('../data/posts-data-source');
 const { getUsers } = require('../data/usersDataSource');
 const MailHelper = require('./helpers/mail-helper');
 
@@ -43,6 +44,51 @@ const postsCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
     user: req.user,
+  });
+};
+
+const postsCreateProcessHandler = (req, res) => {
+  const {
+    accountId,
+    author,
+    title,
+    description,
+    whatsapp,
+    phone,
+    email,
+    category,
+    goodsStatus,
+  } = req.body;
+
+  const { name, mv } = req.files.image;
+  const imageName = Date.now() + name;
+
+  mv(path.join(__dirname, `../public/images/posts/${imageName}`));
+
+  const setPosts = {
+    accountId,
+    image: imageName,
+    title,
+    author,
+    category,
+    description,
+    goodsStatus,
+    contacts: {
+      whatsapp,
+      phone,
+      email,
+    },
+    isDone: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  postPosts(setPosts, (respond) => {
+    if (respond.status === 201) {
+      res.redirect('/posts');
+    } else {
+      res.redirect('/posts.create');
+    }
   });
 };
 
@@ -123,6 +169,7 @@ module.exports = {
   postsHandler,
   postsByCategoryHandler,
   postsCreateHandler,
+  postsCreateProcessHandler,
   educationHandler,
   logoutHandler,
   authPlatformSuccessHandler,
