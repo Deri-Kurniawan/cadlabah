@@ -11,6 +11,17 @@ const getPosts = (callback) => {
   });
 };
 
+const postPosts = (data, callback) => {
+  axios.post(API_ENDPOINT.postPosts(), data, {
+    headers: {
+      'Accept': 'application/json',
+    },
+  }).then((res) => {
+    callback(res);
+  });
+};
+
 module.exports = {
   getPosts,
+  postPosts,
 };
