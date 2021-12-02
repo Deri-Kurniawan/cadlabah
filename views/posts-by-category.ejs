@@ -15,7 +15,7 @@
         <div class="card mb-3 shadow" tabindex="0">
           <div class="card-header">
             <h3 class="card-title my-2">
-              [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= title %>
+              [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= post.title %>
             </h3>
             <p class="card-text">
               <div class="my-2">
@@ -32,12 +32,12 @@
             </p>
           </div>
           <div class="ratio ratio-16x9">
-            <img class="img-fluid img-thumbnail lazyload" data-src="<%= post.image %>" class="card-img-top"
-              alt="gambar">
+            <img class="img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
+              class="card-img-top" alt="gambar">
           </div>
           <div class="card-body">
             <p class="card-text">
-              <%= post.description %>
+              <%- post.description %>
             </p>
 
             <p><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></p>
