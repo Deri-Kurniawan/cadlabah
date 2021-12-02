@@ -2,7 +2,6 @@ const session = require('express-session');
 const flash = require('express-flash');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
-const path = require('path');
 const passport = require('passport');
 const timeHelper = require('./helpers/time-helper');
 
@@ -12,7 +11,7 @@ const Settings = {
     app.set('trust proxy', 1);
     app.use(cors());
     app.use(express.urlencoded({ extended: true }));
-    app.use(express.static(path.join(__dirname, '/node_modules/')));
+    app.use(express.static('node_modules'));
     app.use(express.static('public'));
     app.use(express.json());
 
