@@ -43,6 +43,13 @@ const postsCreateHandler = (req, res) => {
   });
 };
 
+const educationHandler = (req, res) => {
+  res.render('tips-dan-trik', {
+    title: 'Education',
+    user: req.user,
+  });
+};
+
 const logoutHandler = (req, res) => {
   req.logout();
   res.redirect('/');
@@ -113,6 +120,7 @@ module.exports = {
   postsHandler,
   postsByCategoryHandler,
   postsCreateHandler,
+  educationHandler,
   logoutHandler,
   authPlatformSuccessHandler,
   pageNotFoundHandler,
