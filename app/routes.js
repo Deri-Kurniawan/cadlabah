@@ -3,6 +3,7 @@ const {
   postsHandler,
   postsByCategoryHandler,
   postsCreateHandler,
+  postsCreateProcessHandler,
   educationHandler,
   logoutHandler,
   authPlatformSuccessHandler,
@@ -20,6 +21,7 @@ const Routes = {
     app.get('/posts', postsHandler);
     app.get('/posts/category/:categoryName', postsByCategoryHandler);
     app.get('/posts/create', authCheckerMiddleware, postsCreateHandler);
+    app.post('/posts/create', authCheckerMiddleware, postsCreateProcessHandler);
     app.get('/edu/tips-dan-trik', educationHandler);
     app.get('/auth/google', authPlatformMiddleware, google.request);
     app.get('/auth/github', authPlatformMiddleware, github.request);
