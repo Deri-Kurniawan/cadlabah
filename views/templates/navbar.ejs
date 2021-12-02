@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top shadow">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary sticky-top" id="navbar">
   <div class="container">
     <a class="navbar-brand" href="/">CADLABAH</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -8,16 +8,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item">
-          <a class="nav-link <%= (title.toLowerCase() === 'home') ? 'active' : '' %> " href="/home">Beranda</a>
+          <a class="nav-link <%= (title.toLowerCase() === 'home') ? 'active' : '' %>" href="/home">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= (title.toLowerCase() === 'postingan') ? 'active' : '' %> " href="/posts">Postingan</a>
+          <a class="nav-link <%= (title.toLowerCase() === 'postingan') ? 'active' : '' %>" href="/posts">Postingan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= (title.toLowerCase() === 'education') ? 'active' : '' %>"
+            href="/edu/tips-dan-trik">Edukasi</a>
         </li>
       </ul>
       <div class="d-flex">
         <div class="dropdown btn-group">
-          <button type="button" class="btn btn-outline-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
-            data-bs-display="static" aria-expanded="false">
+          <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
+            data-bs-display="static" aria-expanded="false" id="buttonLogInToggler">
             <i class="fas fa-user"></i>
             <%= user ? user.displayName : 'Tamu' %>
           </button>

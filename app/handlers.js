@@ -22,9 +22,30 @@ const postsHandler = (req, res) => {
   });
 };
 
+const postsByCategoryHandler = (req, res) => {
+  getPosts((posts) => {
+    const postFilteredByCategory = posts.filter((post) => (
+      post.category === req.params.categoryName
+    ));
+    res.render('posts-by-category', {
+      title: 'Postingan',
+      user: req.user,
+      posts: postFilteredByCategory,
+      categoryName: req.params.categoryName,
+    });
+  });
+};
+
 const postsCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
+    user: req.user,
+  });
+};
+
+const educationHandler = (req, res) => {
+  res.render('tips-dan-trik', {
+    title: 'Education',
     user: req.user,
   });
 };
@@ -97,7 +118,9 @@ const pageNotFoundHandler = (req, res) => {
 module.exports = {
   homeHandler,
   postsHandler,
+  postsByCategoryHandler,
   postsCreateHandler,
+  educationHandler,
   logoutHandler,
   authPlatformSuccessHandler,
   pageNotFoundHandler,

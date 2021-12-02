@@ -1,7 +1,9 @@
 const {
   homeHandler,
   postsHandler,
+  postsByCategoryHandler,
   postsCreateHandler,
+  educationHandler,
   logoutHandler,
   authPlatformSuccessHandler,
   pageNotFoundHandler,
@@ -16,7 +18,9 @@ const Routes = {
     app.get('/', homeHandler);
     app.get('/home', homeHandler);
     app.get('/posts', postsHandler);
+    app.get('/posts/category/:categoryName', postsByCategoryHandler);
     app.get('/posts/create', authCheckerMiddleware, postsCreateHandler);
+    app.get('/edu/tips-dan-trik', educationHandler);
     app.get('/auth/google', authPlatformMiddleware, google.request);
     app.get('/auth/github', authPlatformMiddleware, github.request);
     app.get('/logout', logoutHandler);
