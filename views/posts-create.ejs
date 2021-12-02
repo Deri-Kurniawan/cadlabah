@@ -7,13 +7,14 @@
     <h2>Buat Postingan</h2>
     <form action="/posts/create" method="post" enctype="multipart/form-data">
       <input type="text" name="accountId" value="<%= Number(user.id) %>" hidden>
+      <input type="text" name="author" value="<%= user.displayName %>" hidden>
       <div class="form-floating mb-3">
-        <input type="text" name="title" id="title" class="form-control" value="" placeholder="Judul">
+        <input type="text" name="title" id="title" class="form-control" value="" placeholder="Judul" required>
         <label for="title">Judul</label>
       </div>
 
       <div class="input-group mb-3">
-        <input type="file" class="form-control" name="image" id="image" accept="image/*">
+        <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
         <label class="input-group-text" for="image">Gambar</label>
       </div>
 
@@ -49,7 +50,7 @@
       <div class="row">
         <div class="col">
           <div class="form-floating mb-3">
-            <select name="category" id="caategory" class="form-control" value="" placeholder="Kategori">
+            <select name="category" id="caategory" class="form-control" value="" placeholder="Kategori" required>
               <option value="">Pilih Kategori Barang</option>
               <option value="electronic">Elektronik</option>
               <option value="accessories">Aksesoris</option>
@@ -60,7 +61,7 @@
 
         <div class="col">
           <div class="form-floating mb-3">
-            <select name="goodsStatus" id="goodsStatus" class="form-control" value="" placeholder="Kategori">
+            <select name="goodsStatus" id="goodsStatus" class="form-control" value="" placeholder="Kategori" required>
               <option value="">Pilih Status Barang</option>
               <option value="0">Hilang</option>
               <option value="1">Temuan</option>
