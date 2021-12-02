@@ -11,7 +11,8 @@
           <a class="nav-link <%= (title.toLowerCase() === 'home') ? 'active' : '' %>" href="/home">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= (title.toLowerCase() === 'postingan') ? 'active' : '' %>" href="/posts">Postingan</a>
+          <a class="nav-link <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan') ? 'active' : '' %>"
+            href="/posts">Postingan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <%= (title.toLowerCase() === 'education') ? 'active' : '' %>"
