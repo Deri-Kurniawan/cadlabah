@@ -22,6 +22,8 @@ const postsHandler = (req, res) => {
       title: 'Postingan',
       user: req.user,
       posts,
+      subTitle: 'Semua Postingan',
+      isPostEmptyMessage: 'Postingan Kosong!',
     });
   });
 };
@@ -31,11 +33,12 @@ const postsByCategoryHandler = (req, res) => {
     const postFilteredByCategory = posts.filter((post) => (
       post.category === req.params.categoryName
     ));
-    res.render('posts-by-category', {
+    res.render('posts', {
       title: 'Postingan',
       user: req.user,
       posts: postFilteredByCategory,
-      categoryName: req.params.categoryName,
+      subTitle: `Postingan berdasarkan kategori <b>${req.params.categoryName}</b>`,
+      isPostEmptyMessage: `Postingan berdasarkan kategori <b>${req.params.categoryName}</b> Kosong!`,
     });
   });
 };

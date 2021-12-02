@@ -10,26 +10,26 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <!-- post item -->
         <% if(posts.length > 0) { %>
-        <h2 class="my-3 text-center">Semua Postingan</b></h2>
+        <h2 class="my-3 text-center"><%- subTitle %></h2>
         <% posts.forEach((post) => { %>
         <div class="card mb-3 shadow" tabindex="0">
           <div class="card-header">
             <h3 class="card-title my-2">
               [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= post.title %>
-              </h2>
-              <p class="card-text">
-                <div class="my-2">
-                  <a href="/posts/category/<%= post.category %>">
-                    <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
-                      <%= post.category %>
-                    </div>
-                  </a>
-                </div>
-                <small class="text-muted">
-                  Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
-                  <%= new Date(post.createdAt).toLocaleString() %>
-                </small>
-              </p>
+            </h3>
+            <p class="card-text">
+              <div class="my-2">
+                <a href="/posts/category/<%= post.category %>">
+                  <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
+                    <%= post.category %>
+                  </div>
+                </a>
+              </div>
+              <small class="text-muted">
+                Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
+                <%= new Date(post.createdAt).toLocaleString() %>
+              </small>
+            </p>
           </div>
           <div class="ratio ratio-16x9">
             <img class="img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
@@ -40,7 +40,7 @@
               <%- post.description %>
             </p>
 
-            <h4><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></h4>
+            <p><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></p>
             <div class="row">
               <div class="col-6">
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
@@ -89,7 +89,7 @@
         </div>
         <% }); // end of foreach %>
         <% } else { %>
-        <h1>Posts is Empty</h1>
+        <h2><%- isPostEmptyMessage %> </h2>
         <% } // end of else %>
         <!-- end of post item -->
       </div>
