@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const { BASE_URL } = require('../../globals/config');
 
 const mailTransporter = () => {
   const transporter = nodemailer.createTransport({
@@ -25,12 +26,12 @@ const sendGreetingsFirstTime = async (transporter, { fullName, to }) => {
     subject: `Welcome to Cadlabah ${fullName}!`,
     text: `
     <p>Hai, ${fullName}!. Kami Sangat senang karena anda telah bergabung pada platform kami.</p>
-    <p>Mari mulai jelajahi barang yang hilang ataupun yang ditemukan di <a href="http://localhost:5500/posts" target="_blank">sini</a></p>
+    <p>Mari mulai jelajahi barang yang hilang ataupun yang ditemukan di <a href="${BASE_URL}posts" target="_blank">sini</a></p>
     butuh bantuan? <a href="mailto:cadlabahlimited@gmail.com">Tanya melalui email</a>
     `,
     html: `
     <p>Hai, ${fullName}!. Kami Sangat senang karena anda telah bergabung pada platform kami.</p>
-    <p>Mari mulai jelajahi barang yang hilang ataupun yang ditemukan di <a href="http://localhost:5500/posts" target="_blank">sini</a></p>
+    <p>Mari mulai jelajahi barang yang hilang ataupun yang ditemukan di <a href="${BASE_URL}posts" target="_blank">sini</a></p>
     butuh bantuan? <a href="mailto:cadlabahlimited@gmail.com">Tanya melalui email</a>
     `,
   });
