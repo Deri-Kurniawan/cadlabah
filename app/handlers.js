@@ -13,6 +13,7 @@ const homeHandler = (req, res) => {
     usersTotal: '1.000',
     postsTotal: '2.000',
     helpedTotal: '800',
+    notif: req.flash('notif'),
   });
 };
 
@@ -24,6 +25,7 @@ const postsHandler = (req, res) => {
       posts,
       subTitle: 'Semua Postingan',
       isPostEmptyMessage: 'Postingan Kosong!',
+      notif: req.flash('notif'),
     });
   });
 };
@@ -47,6 +49,7 @@ const postsCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
     user: req.user,
+    notif: req.flash('notif'),
   });
 };
 
@@ -88,9 +91,11 @@ const postsCreateProcessHandler = (req, res) => {
 
   postPosts(setPosts, (respond) => {
     if (respond.status === 201) {
+      req.flash('notif', 'Postingan berhasil dibuat!');
       res.redirect('/posts');
     } else {
-      res.redirect('/posts.create');
+      req.flash('notif', 'Postingan gagal dibuat!');
+      res.redirect('/posts/create');
     }
   });
 };
@@ -104,6 +109,7 @@ const educationHandler = (req, res) => {
 
 const logoutHandler = (req, res) => {
   req.logout();
+  req.flash('notif', 'Logout Berhasil!');
   res.redirect('/');
 };
 
@@ -136,7 +142,7 @@ const authPlatformSuccessHandler = async (req, res) => {
         break;
 
       default:
-        req.flash('authError', 'Opps someting went wrong! \n please try again later!');
+        req.flash('notif', 'Opps.. login gagal! \nCoba lagi nanti');
         res.redirect('/');
         break;
     }
@@ -155,9 +161,9 @@ const authPlatformSuccessHandler = async (req, res) => {
         });
       }
     });
-  } else {
-    res.redirect('/');
   }
+
+  req.flash('notif', 'Login Sukses!');
   res.redirect('/');
 };
 
