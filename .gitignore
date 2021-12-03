@@ -1,3 +1,5 @@
 node_modules
 package-lock.json
-public/images/posts/*
+public/images/posts/*.jpeg
+public/images/posts/*.jpg
+public/images/posts/*.png
