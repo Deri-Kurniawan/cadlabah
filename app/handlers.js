@@ -41,6 +41,7 @@ const postsByCategoryHandler = (req, res) => {
       posts: postFilteredByCategory,
       subTitle: `Postingan berdasarkan kategori <b>${req.params.categoryName}</b>`,
       isPostEmptyMessage: `Postingan berdasarkan kategori <b>${req.params.categoryName}</b> Kosong!`,
+      notif: req.flash('notif'),
     });
   });
 };
