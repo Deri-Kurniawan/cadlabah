@@ -31,12 +31,12 @@
               </small>
             </p>
           </div>
-          <div class="ratio ratio-16x9">
-            <a href="/images/posts/<%= post.image %>" target="_blank">
+          <a href="/images/posts/<%= post.image %>" target="_blank">
+            <div class="ratio ratio-16x9">
               <img class="img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
                 class="card-img-top" alt="gambar">
-            </a>
-          </div>
+            </div>
+          </a>
           <div class="card-body">
             <p class="card-text">
               <%- post.description %>
@@ -100,3 +100,5 @@
   </div>
 </main>
 <%- include('templates/footer') %>
+
+<%- include('templates/flash') %>
