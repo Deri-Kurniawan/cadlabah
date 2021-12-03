@@ -10,10 +10,11 @@
       </h2>
       <div id="panelsStayOpen-c1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-h1">
         <div class="accordion-body">
-          <a class="btn btn-outline-primary text-decoration-none text-center d-block mb-3" href="/posts">Semua</a>
-          <a class="btn btn-outline-primary text-decoration-none text-center d-block mb-3"
+          <a class="btn btn<%= (title.toLowerCase() === 'postingan') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
+            href="/posts">Semua</a>
+          <a class="btn btn<%= (title.toLowerCase() === 'postingan kategori accessories') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
             href="/posts/category/accessories">Aksesoris</a>
-          <a class="btn btn-outline-primary text-decoration-none text-center d-block mb-3"
+          <a class="btn btn<%= (title.toLowerCase() === 'postingan kategori electronics') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
             href="/posts/category/electronics">Elektronik</a>
         </div>
       </div>
