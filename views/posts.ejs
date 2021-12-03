@@ -14,18 +14,21 @@
         <% posts.forEach((post) => { %>
         <div class="card mb-3 shadow" tabindex="0">
           <div class="card-header">
-            <h3 class="card-title my-2">
-              [<%= post.goodsStatus === 1 ? 'Temuan' : 'Hilang' %>] <%= post.title %>
+            <h3 class="card-title my-2 text-capitalize">
+              <span class="<%= (Number(post.goodsStatus) === 1) ? 'text-success' : 'text-danger' %>">
+                [<%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>]
+              </span>
+              <%= post.title %>
             </h3>
             <p class="card-text">
               <div class="my-2">
                 <a href="/posts/category/<%= post.category %>">
-                  <div class="badge bg-primary" aria-label="kategori <%= post.category %>">
+                  <div class="badge bg-primary text-capitalize" aria-label="kategori <%= post.category %>">
                     <%= post.category %>
                   </div>
                 </a>
               </div>
-              <small class="text-muted">
+              <small class="text-muted text-capitalize">
                 Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
                 <%= new Date(post.createdAt).toLocaleString() %>
               </small>
@@ -38,7 +41,7 @@
             </div>
           </a>
           <div class="card-body">
-            <p class="card-text">
+            <p class="card-text text-capitalize">
               <%- post.description %>
             </p>
 
@@ -80,7 +83,7 @@
                   </a>
                   <% } // end of if %>
                   <% } else { // else contact length %>
-                  <p class="m-2"><%= post.author %> Tidak mencantumkan kontak</p>
+                  <p class="m-2 text-capitalize"><%= post.author %> Tidak mencantumkan kontak</p>
 
                   <% } //end of if contact length %>
                 </div>
@@ -91,7 +94,7 @@
         </div>
         <% }); // end of foreach %>
         <% } else { %>
-        <h2><%- isPostEmptyMessage %> </h2>
+        <h2 class="text-capitalize"><%- isPostEmptyMessage %></h2>
         <% } // end of else %>
         <!-- end of post item -->
       </div>
