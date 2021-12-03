@@ -90,7 +90,7 @@ const postsCreateProcessHandler = (req, res) => {
     if (respond.status === 201) {
       res.redirect('/posts');
     } else {
-      res.redirect('/posts.create');
+      res.redirect('/posts/create');
     }
   });
 };
