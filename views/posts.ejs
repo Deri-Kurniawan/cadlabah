@@ -29,7 +29,7 @@
                 </a>
               </div>
               <small class="text-muted text-capitalize">
-                Diposting oleh <i class="fas fa-user"></i> <%= post.author %> pada
+                Diposting oleh <i class="fas fa-user fa-fw"></i> <%= post.author %> pada
                 <%= new Date(post.createdAt).toLocaleString() %>
               </small>
             </p>
@@ -51,12 +51,12 @@
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseContact<%= post.id %>" aria-expanded="false"
                   aria-controls="collapseContact<%= post.id %>">
-                  <i class="fas fa-contact-book"></i> Lihat Kontak
+                  <i class="fas fa-contact-book fa-fw"></i> Lihat Kontak
                 </button>
               </div>
               <div class="col-6">
                 <button class="col-12 btn btn-outline-success" data-postID="<%= post.id %>"><i
-                    class="fas fa-share share-button"></i> Bagikan</button>
+                    class="fas fa-share fa-fw share-button"></i> Bagikan</button>
               </div>
             </div>
 
@@ -69,17 +69,17 @@
                   <% if(whatsapp && whatsapp !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-success"
                     href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Whatsapp
+                    <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
                   </a>
                   <% } // end of if %>
                   <% if(email && email !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>">
-                    <i class="fas fa-mail-bulk"></i> Email
+                    <i class="fas fa-mail-bulk fa-fw"></i> Email
                   </a>
                   <% } // end of if %>
                   <% if(phone && phone !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>">
-                    <i class="fas fa-phone"></i> Telepon
+                    <i class="fas fa-phone fa-fw"></i> Telepon
                   </a>
                   <% } // end of if %>
                   <% } else { // else contact length %>

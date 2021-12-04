@@ -46,24 +46,24 @@
             <% if (!user) { %>
             <li>
               <a class="dropdown-item" href="/auth/google">
-                <i class="fab fa-google text-primary"></i> Masuk Dengan Google
+                <i class="fab fa-google fa-fw text-primary"></i> Masuk Dengan Google
               </a>
             </li>
             <li>
               <a class="dropdown-item" href="/auth/github">
-                <i class="fab fa-github text-dark"></i> Masuk Dengan Github
+                <i class="fab fa-github fa-fw text-dark"></i> Masuk Dengan Github
               </a>
             </li>
             <% } else { %>
             <!-- logout modal trigger -->
             <li>
               <a class="dropdown-item" href="/posts/create">
-                <i class="fas fa-pen text-success"></i> Buat Postingan
+                <i class="fas fa-pen fa-fw text-success"></i> Buat Postingan
               </a>
             </li>
             <li>
               <a class="dropdown-item" href="/logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                <i class="fas fa-sign-out text-danger"></i> Keluar
+                <i class="fas fa-sign-out fa-fw text-danger"></i> Keluar
               </a>
             </li>
             <!-- end logout modal trigger -->
