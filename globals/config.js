@@ -1,4 +1,4 @@
-const PORT = 5500;
+const PORT = 9000;
 
 const CONFIG = {
   BASE_URL: `http://localhost:${PORT}/`,
