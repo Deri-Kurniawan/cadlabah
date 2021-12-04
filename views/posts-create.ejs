@@ -78,6 +78,9 @@
   </div>
 </main>
 
+<%- include('templates/copyright') %>
+<%- include('templates/flash') %>
+
 <script>
   tinymce.init({
     selector: 'textarea',
@@ -85,6 +88,5 @@
     toolbar_mode: 'floating',
   });
 </script>
-<%- include('templates/footer') %>
 
-<%- include('templates/flash') %>
+<%- include('templates/footer') %>

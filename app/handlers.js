@@ -5,6 +5,7 @@ const { getUsers } = require('../data/usersDataSource');
 const MailHelper = require('./helpers/mail-helper');
 
 const API_ENDPOINT = require('../globals/api-endpoint');
+const { BASE_URL } = require('../globals/config');
 
 const homeHandler = (req, res) => {
   res.render('home', {
@@ -145,7 +146,7 @@ const authPlatformSuccessHandler = async (req, res) => {
 
       default:
         req.flash('notif', 'Opps.. login gagal! \nCoba lagi nanti');
-        res.redirect('/');
+        res.redirect('back');
         break;
     }
 
@@ -166,12 +167,13 @@ const authPlatformSuccessHandler = async (req, res) => {
   }
 
   req.flash('notif', 'Login Sukses!');
-  res.redirect('/');
+  res.redirect('back');
 };
 
 const pageNotFoundHandler = (req, res) => {
   res.status(404).render('errors/404', {
     title: 'Page Not Found',
+    baseUrl: BASE_URL,
   });
 };
 
