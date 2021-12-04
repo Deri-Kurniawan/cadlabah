@@ -2,9 +2,10 @@
   "name": "cadlabah",
   "version": "1.0.0",
   "description": "Aplikasi Web Pencarian dan Laporan Penemuan Barang",
-  "main": "app.js",
+  "main": "app/app.js",
   "scripts": {
-    "start": "nodemon ./app/app.js",
+    "start": "env MODE=production PORT=9000 nodemon .",
+    "start-dev": "env MODE=development PORT=9000 nodemon .",
     "lint": "eslint ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
