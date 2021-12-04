@@ -5,6 +5,7 @@ const { getUsers } = require('../data/usersDataSource');
 const MailHelper = require('./helpers/mail-helper');
 
 const API_ENDPOINT = require('../globals/api-endpoint');
+const { BASE_URL } = require('../globals/config');
 
 const homeHandler = (req, res) => {
   res.render('home', {
@@ -172,6 +173,7 @@ const authPlatformSuccessHandler = async (req, res) => {
 const pageNotFoundHandler = (req, res) => {
   res.status(404).render('errors/404', {
     title: 'Page Not Found',
+    baseUrl: BASE_URL,
   });
 };
 
