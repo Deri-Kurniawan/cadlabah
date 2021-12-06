@@ -37,9 +37,4 @@ const sendGreetingsFirstTime = async (transporter, { fullName, to }) => {
   });
 };
 
-sendGreetingsFirstTime(mailTransporter(), {
-  fullName: 'Deri',
-  to: 'deri.netuchi@gmail.com',
-});
-
 module.exports = { mailTransporter, sendGreetingsFirstTime };
