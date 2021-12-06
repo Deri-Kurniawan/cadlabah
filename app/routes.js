@@ -15,7 +15,7 @@ const authPlatformMiddleware = require('./middleware/auth-platform-middleware');
 const { authCheckerMiddleware } = require('./middleware/auth-checker-middleware');
 
 const Routes = {
-  init: (app) => {
+  set: (app) => {
     app.get('/', homeHandler);
     app.get('/home', homeHandler);
     app.get('/posts', postsHandler);
