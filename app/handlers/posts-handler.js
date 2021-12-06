@@ -55,7 +55,7 @@ const postsCreateProcessHandler = (req, res) => {
   const { name, mv } = req.files.image;
   const imageName = Date.now() + name;
 
-  mv(path.join(__dirname, `../public/images/posts/${imageName}`));
+  mv(path.join(__dirname, `../../public/images/posts/${imageName}`));
 
   const setPosts = {
     accountId,
