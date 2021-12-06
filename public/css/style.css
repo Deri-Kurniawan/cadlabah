@@ -14,3 +14,7 @@ body {
 #skipToContentButton:focus {
   top: 0;
 }
+
+.posts-img:hover {
+  opacity: .9;
+}
