@@ -83,8 +83,8 @@ const postsCreateProcessHandler = (req, res) => {
     description,
     goodsStatus,
     contacts: {
-      whatsapp: `+62${whatsapp}`,
-      phone: `+62${phone}`,
+      whatsapp: (whatsapp) ? `+62${whatsapp}` : '',
+      phone: (phone) ? `+62${phone}` : '',
       email,
     },
     isDone: false,
