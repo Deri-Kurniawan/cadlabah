@@ -15,6 +15,7 @@
       "linebreak-style": "off",
       "no-console": "off",
       "no-underscore-dangle": "off",
-      "quote-props": "off"
+      "quote-props": "off",
+      "no-plusplus": "off"
     }
 }

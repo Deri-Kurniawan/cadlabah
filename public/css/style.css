@@ -15,6 +15,14 @@ body {
   top: 0;
 }
 
+nav.navbar {
+  transition: .2s all ease-in-out;
+  -webkit-transition: .2s all ease-in-out;
+  -moz-transition: .2s all ease-in-out;
+  -ms-transition: .2s all ease-in-out;
+  -o-transition: .2s all ease-in-out;
+}
+
 .posts-img:hover {
   opacity: .9;
 }
