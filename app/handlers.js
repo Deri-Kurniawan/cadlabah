@@ -1,7 +1,7 @@
 const path = require('path');
 const { default: axios } = require('axios');
 const { getPosts, postPosts } = require('../data/posts-data-source');
-const { getUsers } = require('../data/usersDataSource');
+const { getUsers } = require('../data/users-data-source');
 const MailHelper = require('./helpers/mail-helper');
 
 const API_ENDPOINT = require('../globals/api-endpoint');
