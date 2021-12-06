@@ -8,6 +8,10 @@ body {
   .mobile-hide {
     display: none;
   }
+
+  .logout-confirm {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
