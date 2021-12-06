@@ -6,7 +6,7 @@ const passport = require('passport');
 const timeHelper = require('./helpers/time-helper');
 
 const Settings = {
-  init: (app, express) => {
+  set: (app, express) => {
     app.set('view engine', 'ejs');
     app.set('trust proxy', 1);
     app.use(cors());

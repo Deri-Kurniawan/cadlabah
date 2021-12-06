@@ -11,11 +11,11 @@
           <a class="nav-link <%= (title.toLowerCase() === 'home') ? 'active' : '' %>" href="/home">Beranda</a>
         </li>
         <li class="nav-item mobile-hide">
-          <a class="nav-link <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronics') ? 'active' : '' %>"
+          <a class="nav-link <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
             href="/posts">Postingan</a>
         </li>
         <li class="nav-item dropdown mobile-show">
-          <a class="nav-link dropdown-toggle <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronics') ? 'active' : '' %>"
+          <a class="nav-link dropdown-toggle <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
             href="#" id="posts-category" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Kategori Postingan
           </a>
@@ -26,8 +26,8 @@
                 class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori accessories') ? 'active' : '' %>"
                 href="/posts/category/accessories">Aksesoris</a></li>
             <li><a
-                class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori electronics') ? 'active' : '' %>"
-                href="/posts/category/electronics">Elektronik</a></li>
+                class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
+                href="/posts/category/electronic">Elektronik</a></li>
           </ul>
         </li>
         <li class="nav-item">

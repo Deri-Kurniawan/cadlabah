@@ -3,19 +3,3 @@
 body {
   font-family: 'Chakra Petch';
 }
-
-@media screen and (max-width: 767px) {
-  .mobile-hide {
-    display: none;
-  }
-
-  .logout-confirm {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .mobile-show {
-    display: none;
-  }
-}

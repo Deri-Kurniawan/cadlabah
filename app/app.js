@@ -6,12 +6,6 @@ require('../third-party/auth/platforms-strategy');
 
 const app = express();
 
-const application = {
-  run: (appInstance, expressInstance) => {
-    Settings.init(appInstance, expressInstance);
-    Routes.init(appInstance);
-    Server.init(appInstance);
-  },
-};
-
-application.run(app, express);
+Settings.set(app, express);
+Routes.set(app);
+Server.run(app);
