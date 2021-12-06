@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
-const { BASE_URL } = require('../../globals/config');
+const { BASE_URL } = require('../../configs/config');
 
 const GOOGLE_CLIENT_ID = '799094837740-gfgvlphvh6douai56d9th9kj9n2up2os.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';

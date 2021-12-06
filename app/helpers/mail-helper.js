@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { BASE_URL } = require('../../globals/config');
+const { BASE_URL } = require('../configs/config');
 
 const mailTransporter = () => {
   const transporter = nodemailer.createTransport({

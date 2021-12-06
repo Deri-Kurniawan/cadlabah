@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const API_ENDPOINT = require('../globals/api-endpoint');
+const API_ENDPOINT = require('../apis/mockapi-endpoint');
 
 const getPosts = (callback) => {
   axios.get(API_ENDPOINT.getPosts, {

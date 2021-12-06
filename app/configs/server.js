@@ -1,4 +1,4 @@
-const { SERVER_PORT, BASE_URL } = require('../globals/config');
+const { SERVER_PORT, BASE_URL } = require('./config');
 
 const Server = {
   run: (app) => {

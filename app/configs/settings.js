@@ -3,7 +3,8 @@ const flash = require('express-flash');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const passport = require('passport');
-const timeHelper = require('./helpers/time-helper');
+const timeHelper = require('../helpers/time-helper');
+require('../third-party/strategy/platforms');
 
 const Settings = {
   set: (app, express) => {
