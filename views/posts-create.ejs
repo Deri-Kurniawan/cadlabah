@@ -18,15 +18,15 @@
         <label class="input-group-text" for="image">Gambar</label>
       </div>
 
-      <div class="form-floating mb-3">
+      <div class="mb-3">
+        <label for="description">Keterangan</label>
         <textarea name="description" id="description" class="form-control" value="" placeholder="Keterangan"
           style="height: 10em"></textarea>
-        <label for="Keterangan">Keterangan</label>
       </div>
 
       <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-          <label for="whatsapp">Kontak Whatsapp</label>
+          <label for="whatsapp">Kontak Whatsapp (opsional)</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="whatsapp-addon">+62</span>
             <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value="" placeholder="8XXXXXXX"
@@ -39,12 +39,12 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="phone-addon">+62</span>
             <input type="tel" name="phone" id="phone" class="form-control" value="" placeholder="8XXXXXXX"
-              aria-describedby="phone-addon">
+              aria-describedby="phone-addon" required>
           </div>
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-          <label for="email">Email</label>
+          <label for="email">Email (opsional)</label>
           <div class="input-group mb-3">
             <input type="email" name="email" id="email" class="form-control" value="" placeholder="foo@contoh.com">
           </div>
