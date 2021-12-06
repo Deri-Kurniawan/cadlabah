@@ -1,7 +1,7 @@
 <%- include('templates/header') %>
 <link rel="stylesheet" href="/css/home.css">
 <%- include('templates/navbar') %>
-<main tabindex="0" id="mainContent">
+<main tabindex="0" id="mainContent" aria-label="konten utama">
   <header>
     <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 100" version="1.1"
       xmlns="http://www.w3.org/2000/svg">
@@ -26,8 +26,10 @@
               <div></div>
               <div></div>
             </div>
-            <h2 class="display-2 text-center fw-bold m-0 p-0">CADLABAH</h2>
-            <p class="text-center"><b>Ca</b>ri
+            <h2 class="display-2 text-center fw-bold m-0 p-0" tabindex="0">CADLABAH</h2>
+            <p class="text-center" aria-label="kepanjangan dari cadlabah adalah cari dan lapor barang hilang"
+              tabindex="0">
+              <b>Ca</b>ri
               <b>D</b>an <b>La</b>por <b>Ba</b>rang <b>H</b>ilang</p>
             <a class="btn btn-primary col-6 offset-3 mt-5 mt-md-2 mt-lg-3 mt-xl-5 rounded-pill fs-5" href="/posts"><i
                 class="fas fa-search fa-fw"></i>
@@ -35,7 +37,7 @@
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-md-6">
-          <a href="https://www.vecteezy.com/free-vector/thinking" target="_blank" rel="norefferer">
+          <a href="https://www.vecteezy.com/free-vector/thinking" target="_blank" rel="norefferer" aria-label="">
             <img class="col-12 img-fluid my-md-4" src="./images/illustration/Peopleaskquestions.jpg"
               alt="Thinking Vectors by Vecteezy" title="Thinking Vectors by Vecteezy">
           </a>
@@ -51,19 +53,20 @@
         </svg>
       </header>
       <div class="bg-primary text-light">
-        <h3 class="text-center fw-bold display-5 pb-5 m-0">Analitik</h3>
+        <h3 class="text-center fw-bold display-5 pb-5 m-0" tabindex="0">Analitik</h3>
         <div class="row text-center">
-          <div class="col-4 analytic">
+          <div class="col-4 analytic" tabindex="0" aria-label="total pengguna saat ini adalah <%= usersTotal %> orang">
             <i class="fas fa-user-circle d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= usersTotal %></span>
             <span class="d-block mt-1 analytic-title">Pengguna</span>
           </div>
-          <div class="col-4 analytic">
+          <div class="col-4 analytic" tabindex="0" aria-label="total postingan saat ini adalah <%= postsTotal %>">
             <i class="fas fa-paper-plane d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= postsTotal %></span>
             <span class="d-block mt-1 analytic-title">Postingan</span>
           </div>
-          <div class="col-4 analytic">
+          <div class="col-4 analytic" tabindex="0"
+            aria-label="total orang yang telah terbantu saat ini adalah <%= helpedTotal %> orang">
             <i class="fas fa-check-circle d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= helpedTotal %></span>
             <span class="d-block mt-1 analytic-title">Orang Terbantu</span>
@@ -83,10 +86,10 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-lg-6 py-4">
-              <h3 class="text-center display-5 fw-bold m-0">Apa itu Cadlabah?</h3>
+              <h3 class="text-center display-5 fw-bold m-0" tabindex="0">Apa itu CADLABAH?</h3>
             </div>
             <div class="col-12 col-lg-6">
-              <p class="text-center fs-4">
+              <p class="text-center fs-4" tabindex="0">
                 CADLABAH adalah sebuah aplikasi website untuk pencarian dan pelaporan barang hilang berbentuk sebuah
                 postingan yang dapat dilihat oleh seluruh pengguna atau pengunjung website.
               </p>
@@ -106,8 +109,8 @@
         </header>
         <div class="bg-primary text-light text-center">
           <div class="container">
-            <h3 class="text-center fw-bold display-5 pb-2 m-0">Ayo bergabung!</h3>
-            <p class="pb-4">Dan saling membantu satu sama lain</p>
+            <h3 class="text-center fw-bold display-5 pb-2 m-0" tabindex="0">Ayo bergabung!</h3>
+            <p class="pb-4" tabindex="0">Dan saling membantu satu sama lain</p>
             <a class="btn btn-light mx-1 my-2" href="/auth/google"><i class="fab fa-google fa-fw text-primary"></i>
               Masuk
               dengan

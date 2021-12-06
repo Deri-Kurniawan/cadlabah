@@ -2,9 +2,9 @@
 <script src="https://cdn.tiny.cloud/1/mqiw12ifoks1anqawa00p0o8ef5mfk3sz3uhpb003z954pig/tinymce/5/tinymce.min.js"
   referrerpolicy="origin"></script>
 <%- include('templates/navbar') %>
-<main tabindex="0" id="mainContent">
+<main tabindex="0" id="mainContent" aria-label="konten utama">
   <div class="container my-4">
-    <h2>Buat Postingan</h2>
+    <h2 tabindex="0">Buat Postingan</h2>
     <form action="/posts/create" method="post" enctype="multipart/form-data">
       <input type="text" name="accountId" value="<%= Number(user.id) %>" hidden>
       <input type="text" name="author" value="<%= user.displayName %>" hidden>
@@ -15,7 +15,7 @@
 
       <div class="input-group mb-3">
         <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
-        <label class="input-group-text" for="image">Gambar</label>
+        <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
       </div>
 
       <div class="mb-3">
@@ -28,7 +28,7 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
           <label for="whatsapp">Kontak Whatsapp (opsional)</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="whatsapp-addon">+62</span>
+            <span class="input-group-text" id="whatsapp-addon" tabindex="0">+62</span>
             <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value="" placeholder="8XXXXXXX"
               aria-describedby="whatsapp-addon">
           </div>
@@ -37,7 +37,7 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
           <label for="phone">Telepon Seluler</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="phone-addon">+62</span>
+            <span class="input-group-text" id="phone-addon" tabindex="0">+62</span>
             <input type="tel" name="phone" id="phone" class="form-control" value="" placeholder="8XXXXXXX"
               aria-describedby="phone-addon" required>
           </div>

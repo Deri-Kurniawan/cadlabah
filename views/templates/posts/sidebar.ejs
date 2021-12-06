@@ -11,11 +11,11 @@
       <div id="panelsStayOpen-c1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-h1">
         <div class="accordion-body">
           <a class="btn btn<%= (title.toLowerCase() === 'postingan') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
-            href="/posts">Semua</a>
+            href="/posts" aria-label="semua kategori">Semua</a>
           <a class="btn btn<%= (title.toLowerCase() === 'postingan kategori accessories') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
-            href="/posts/category/accessories">Aksesoris</a>
+            href="/posts/category/accessories" aria-label="kategori aksesoris">Aksesoris</a>
           <a class="btn btn<%= (title.toLowerCase() === 'postingan kategori electronic') ? '-' : '-outline-' %>primary text-decoration-none text-center d-block mb-3"
-            href="/posts/category/electronic">Elektronik</a>
+            href="/posts/category/electronic" aria-label="kategori elektronik">Elektronik</a>
         </div>
       </div>
     </div>
