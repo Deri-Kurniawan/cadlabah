@@ -7,7 +7,12 @@ const getPosts = (callback) => {
       'Accept': 'application/json',
     },
   }).then((res) => {
-    callback(res.data);
+    const postsDescending = [];
+    // Descending sort posts objects
+    for (let index = res.data.length - 1; index >= 0; index--) {
+      postsDescending.push(res.data[index]);
+    }
+    callback(postsDescending);
   });
 };
 
