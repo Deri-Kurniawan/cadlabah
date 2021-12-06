@@ -17,3 +17,11 @@
 </head>
 
 <body>
+  <button class="btn btn-danger" aria-label="menuju konten" id="skipToContentButton">Menuju Konten</button>
+
+  <script>
+    const skipToContentButton = document.querySelector('#skipToContentButton');
+    skipToContentButton.addEventListener('click', () => {
+      document.querySelector('#mainContent').focus();
+    });
+  </script>

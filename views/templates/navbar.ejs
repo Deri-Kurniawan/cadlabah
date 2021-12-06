@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top" id="navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">CADLABAH</a>
+    <h1 class="navbar-brand">
+      <a class="navbar-brand" href="/" aria-label="cadlabah brand logo">
+        CADLABAH
+      </a>
+    </h1>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,7 +42,8 @@
       <div class="d-flex">
         <div class="dropdown btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
-            data-bs-display="static" aria-expanded="false" id="buttonLogInToggler">
+            data-bs-display="static" aria-expanded="false" id="buttonLogInToggler"
+            aria-label="Menu <%= user ? user.displayName : 'Tamu' %>">
             <i class="fas fa-user"></i>
             <%= user ? user.displayName : 'Tamu' %>
           </button>
@@ -79,16 +84,17 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5>Konfirmasi Keluar</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 aria-label="konfirmasi keluar.">Konfirmasi Keluar</h5>
       </div>
       <div class="modal-body">
-        <h6 class="mt-2">Sesi masuk akan dihapus. Yakin ingin keluar?</h6>
+        <h6 class="mt-2"
+          aria-label="Sesi masuk akan dihapus. Yakin ingin keluar?. tekan escape untuk batal keluar. dan tekan enter untuk keluar.">
+          Sesi masuk akan dihapus. Yakin ingin keluar?</h6>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="logoutNoConfirm">Batal <span
-            class="logout-confirm badge bg-light text-dark">Shift</span></button>
-        <a href="/logout" class="btn btn-success" id="logoutYesConfirm">Yakin <span
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="logoutNoConfirm"
+          aria-label="Batal.">Batal <span class="logout-confirm badge bg-light text-dark">Escape</span></button>
+        <a href="/logout" class="btn btn-success" id="logoutYesConfirm" aria-label="Yakin.">Yakin <span
             class="logout-confirm badge bg-light text-dark">Enter</span></a>
       </div>
     </div>
@@ -99,7 +105,7 @@
 <script>
   const logoutModalElement = document.querySelector('#logoutModal');
   logoutModalElement.addEventListener('keyup', (ev) => {
-    if (ev.keyCode === 16) {
+    if (ev.keyCode === 27) {
       document.querySelector('#logoutNoConfirm').click();
     } else if (ev.keyCode === 13) {
       document.querySelector('#logoutYesConfirm').click();

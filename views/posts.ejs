@@ -4,21 +4,23 @@
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <%- include('templates/navbar') %>
-<main tabindex="0" id="mainContent">
+<main tabindex="0" id="mainContent" aria-label="konten utama">
   <div class="container my-4">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <!-- post item -->
         <% if(posts.length > 0) { %>
-        <h2 class="my-3 text-center"><%- subTitle %></h2>
+        <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <% posts.forEach((post) => { %>
-        <div class="card mb-3 shadow" tabindex="0">
+        <div class="card mb-3 shadow">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
-              <span class="<%= (Number(post.goodsStatus) === 1) ? 'text-success' : 'text-danger' %>">
+              <span class="<%= (Number(post.goodsStatus) === 1) ? 'text-success' : 'text-danger' %>"
+                aria-label="<%= (Number(post.goodsStatus) === 1) ? 'Barang temuan' : 'Laporan barang yang hilang' %>"
+                tabindex="0">
                 [<%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>]
               </span>
-              <%= post.title %>
+              <span aria-label="judul postingannya adalah <%= post.title %>" tabindex="0"><%= post.title %></span>
             </h3>
             <p class="card-text">
               <div class="my-2">
@@ -28,24 +30,25 @@
                   </div>
                 </a>
               </div>
-              <small class="text-muted text-capitalize">
+              <small class="text-muted text-capitalize" tabindex="0">
                 Diposting oleh <i class="fas fa-user fa-fw"></i> <%= post.author %> pada
                 <%= new Date(post.createdAt).toLocaleString() %>
               </small>
             </p>
           </div>
-          <a href="/images/posts/<%= post.image %>" target="_blank">
+          <a href="/images/posts/<%= post.image %>" target="_blank" aria-label="gambar postingan">
             <div class="ratio ratio-16x9">
-              <img class="img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
-                class="card-img-top" alt="gambar">
+              <img class="posts-img img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
+                class="card-img-top" alt="gambar" title="klik untuk melihat gambar penuh">
             </div>
           </a>
           <div class="card-body">
-            <p class="card-text text-capitalize">
+            <p class="card-text" tabindex="0">
               <%- post.description %>
             </p>
 
-            <p><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %> </b></p>
+            <p tabindex="0"><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
+              </b></p>
             <div class="row">
               <div class="col-6">
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
@@ -62,28 +65,30 @@
 
             <div class="collapse" id="collapseContact<%= post.id %>">
               <div class="card card-body shadow">
-                <h5>Kontak</h5>
+                <h4 tabindex="0" aria-label="kontak yang tersedia">Kontak</h4>
                 <div class="row">
                   <% const { whatsapp, email, phone } = post.contacts; %>
                   <% if(whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
                   <% if(whatsapp && whatsapp !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-success"
+                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
                     href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
                     <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
                   </a>
                   <% } // end of if %>
                   <% if(email && email !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>">
+                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
+                    aria-label="kontak email">
                     <i class="fas fa-mail-bulk fa-fw"></i> Email
                   </a>
                   <% } // end of if %>
                   <% if(phone && phone !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>">
+                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
+                    aria-label="kontak telepon seluler">
                     <i class="fas fa-phone fa-fw"></i> Telepon
                   </a>
                   <% } // end of if %>
                   <% } else { // else contact length %>
-                  <p class="m-2 text-capitalize"><%= post.author %> Tidak mencantumkan kontak</p>
+                  <p class="m-2 text-capitalize" tabindex="0"><%= post.author %> Tidak mencantumkan kontak</p>
 
                   <% } //end of if contact length %>
                 </div>

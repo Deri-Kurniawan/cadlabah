@@ -3,3 +3,18 @@
 body {
   font-family: 'Chakra Petch';
 }
+
+#skipToContentButton {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 9999;
+}
+
+#skipToContentButton:focus {
+  top: 0;
+}
+
+.posts-img:hover {
+  opacity: .9;
+}
