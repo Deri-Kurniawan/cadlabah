@@ -54,13 +54,20 @@
               <%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
             </p>
             <div class="row">
-              <div class="col-12 col-lg-4 col-xl-4">
-                <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
+              <div class="col-12 col-lg-6 col-xl-6">
+                <button class="col-12 btn btn-primary my-1" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseContact<%= post.id %>" aria-expanded="false"
                   aria-controls="collapseContact<%= post.id %>">
                   <i class="fas fa-contact-book fa-fw"></i> Lihat Kontak
                 </button>
               </div>
+              <% if (user && Number(user.id) === Number(post.accountId)) { %>
+              <div class="col-12 col-lg-6 col-xl-6">
+                <a class="mark-as-complete col-12 btn btn-success my-1" href="/posts/<%= post.id %>/complete"><i
+                    class="fas fa-check"></i> Tandai
+                  selesai</a>
+              </div>
+              <% } %>
             </div>
             <div class="collapse" id="collapseContact<%= post.id %>">
               <div class="card card-body shadow">

@@ -16,6 +16,16 @@ const getPosts = (callback) => {
   });
 };
 
+const getPost = (id, callback) => {
+  axios.get(API_ENDPOINT.getPost(id), {
+    headers: {
+      'Accept': 'application/json',
+    },
+  }).then((res) => {
+    callback(res.data);
+  });
+};
+
 const postPosts = (data, callback) => {
   axios.post(API_ENDPOINT.postPosts(), data, {
     headers: {
@@ -26,7 +36,30 @@ const postPosts = (data, callback) => {
   });
 };
 
+const putPost = (id, callback) => {
+  axios.put(API_ENDPOINT.putPost(id), { done: true }, {
+    headers: {
+      'Accept': 'application/json',
+    },
+  }).then((res) => {
+    callback(res);
+  });
+};
+
+const deletePost = (id, callback) => {
+  axios.delete(API_ENDPOINT.deletePost(id), {
+    headers: {
+      'Accept': 'application/json',
+    },
+  }).then((res) => {
+    callback(res);
+  });
+};
+
 module.exports = {
   getPosts,
+  getPost,
   postPosts,
+  putPost,
+  deletePost,
 };
