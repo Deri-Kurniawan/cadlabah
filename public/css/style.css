@@ -23,6 +23,13 @@ nav.navbar {
   -o-transition: .2s all ease-in-out;
 }
 
-.posts-img:hover {
+.posts-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.posts-img-container:hover .posts-img {
   opacity: .9;
 }
