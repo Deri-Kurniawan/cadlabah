@@ -15,10 +15,12 @@
         <div class="card mb-3 shadow">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
-              <span class="<%= (Number(post.goodsStatus) === 1) ? 'text-success' : 'text-danger' %>"
-                aria-label="<%= (Number(post.goodsStatus) === 1) ? 'Barang temuan' : 'Laporan barang yang hilang' %>"
-                tabindex="0">
-                [<%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>]
+
+              <% const postGoodsStatus=(Number(post.goodsStatus)===1); %>
+
+              <span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
+                aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
+                [<%= postGoodsStatus ? 'Temuan' : 'Hilang' %>]
               </span>
               <span aria-label="judul postingannya adalah <%= post.title %>" tabindex="0"><%= post.title %></span>
             </h3>
@@ -71,20 +73,21 @@
                 <h4 tabindex="0" aria-label="kontak yang tersedia">Kontak</h4>
                 <div class="row">
                   <% const { whatsapp, email, phone } = post.contacts; %>
-                  <% if(whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
-                  <% if(whatsapp && whatsapp !== '') {%>
+
+                  <% if(whatsapp !== '' || email !== '' || phone !== '') { %>
+                  <% if(whatsapp !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
                     href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
                     <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
                   </a>
                   <% } // end of if %>
-                  <% if(email && email !== '') {%>
+                  <% if(email !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
                     aria-label="kontak email">
                     <i class="fas fa-mail-bulk fa-fw"></i> Email
                   </a>
                   <% } // end of if %>
-                  <% if(phone && phone !== '') {%>
+                  <% if(phone !== '') {%>
                   <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
                     aria-label="kontak telepon seluler">
                     <i class="fas fa-phone fa-fw"></i> Telepon
