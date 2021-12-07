@@ -4,6 +4,7 @@ const { getPosts, postPosts, putPost } = require('../models/posts-model');
 const postsHandler = (req, res) => {
   getPosts((posts) => {
     const undonePosts = posts.filter((post) => !post.done);
+
     res.render('posts', {
       title: 'Postingan',
       user: req.user,
@@ -91,7 +92,6 @@ const postsCreateProcessHandler = (req, res) => {
 
 const postsCompleteHandler = (req, res) => {
   putPost((req.params.postId), (respond) => {
-    console.log(respond.status);
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dintandai selesai!');
       res.redirect('/posts');
