@@ -35,7 +35,7 @@ const postsByCategoryHandler = (req, res) => {
   });
 };
 
-const postsCreateHandler = (req, res) => {
+const postCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
     user: req.user,
@@ -43,7 +43,7 @@ const postsCreateHandler = (req, res) => {
   });
 };
 
-const postsCreateProcessHandler = (req, res) => {
+const postCreateProcessHandler = (req, res) => {
   const {
     accountId,
     author,
@@ -84,12 +84,12 @@ const postsCreateProcessHandler = (req, res) => {
       res.redirect('/posts');
     } else {
       req.flash('notif', 'Postingan gagal dibuat!');
-      res.redirect('/posts/create');
+      res.redirect('/post/create');
     }
   });
 };
 
-const postsCompleteHandler = (req, res) => {
+const postCompleteHandler = (req, res) => {
   putPost((req.params.postId), (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dintandai selesai!');
@@ -104,7 +104,7 @@ const postsCompleteHandler = (req, res) => {
 module.exports = {
   postsHandler,
   postsByCategoryHandler,
-  postsCreateHandler,
-  postsCreateProcessHandler,
-  postsCompleteHandler,
+  postCreateHandler,
+  postCreateProcessHandler,
+  postCompleteHandler,
 };
