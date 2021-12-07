@@ -8,10 +8,10 @@
   <div class="container my-4">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
-        <!-- post item -->
         <% if(posts.length > 0) { %>
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <% posts.forEach((post) => { %>
+        <!-- post item -->
         <div class="card mb-3 shadow">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
@@ -50,51 +50,47 @@
           <div class="card-body">
             <div class="card-text" tabindex="0"><%- post.description %></div>
 
-            <p tabindex="0"><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
-              </b></p>
+            <p class="fw-bold" tabindex="0">
+              <%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
+            </p>
             <div class="row">
-              <div class="col-6">
+              <div class="col-12 col-xl-4">
                 <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseContact<%= post.id %>" aria-expanded="false"
                   aria-controls="collapseContact<%= post.id %>">
                   <i class="fas fa-contact-book fa-fw"></i> Lihat Kontak
                 </button>
-                <div class="collapse" id="collapseContact<%= post.id %>">
-                  <div class="card card-body shadow">
-                    <h4 tabindex="0" aria-label="kontak yang tersedia">Kontak</h4>
-                    <div class="row">
-                      <% const { whatsapp, email, phone } = post.contacts; %>
-
-                      <% if(whatsapp !== '' || email !== '' || phone !== '') { %>
-                      <% if(whatsapp !== '') {%>
-                      <a class="col-12 my-1 btn btn-success" aria-label="kontak whatsapp"
-                        href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
-                        <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
-                      </a>
-                      <% } // end of if %>
-                      <% if(email !== '') {%>
-                      <a class="col-12 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
-                        aria-label="kontak email">
-                        <i class="fas fa-mail-bulk fa-fw"></i> Email
-                      </a>
-                      <% } // end of if %>
-                      <% if(phone !== '') {%>
-                      <a class="col-12 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
-                        aria-label="kontak telepon seluler">
-                        <i class="fas fa-phone fa-fw"></i> Telepon
-                      </a>
-                      <% } // end of if %>
-                      <% } else { // else contact length %>
-                      <p class="m-2 text-capitalize" tabindex="0"><%= post.author %> Tidak mencantumkan kontak</p>
-
-                      <% } //end of if contact length %>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div class="col-6">
-                <button class="col-12 btn btn-outline-success" data-postID="<%= post.id %>"><i
-                    class="fas fa-share fa-fw share-button"></i> Bagikan</button>
+            </div>
+            <div class="collapse" id="collapseContact<%= post.id %>">
+              <div class="card card-body shadow">
+                <p><b tabindex="0" aria-label="kontak yang tersedia">Kontak</b></p>
+                <div class="row">
+                  <% const { whatsapp, email, phone } = post.contacts; %>
+                  <% if(whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
+                  <% if(whatsapp && whatsapp !== '') {%>
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
+                    href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
+                    <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
+                  </a>
+                  <% } // end of if %>
+                  <% if(email && email !== '') {%>
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
+                    aria-label="kontak email">
+                    <i class="fas fa-mail-bulk fa-fw"></i> Email
+                  </a>
+                  <% } // end of if %>
+                  <% if(phone && phone !== '') {%>
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
+                    aria-label="kontak telepon seluler">
+                    <i class="fas fa-phone fa-fw"></i> Telepon
+                  </a>
+                  <% } // end of if %>
+                  <% } else { // else contact length %>
+                  <p class="m-2 text-capitalize" tabindex="0"><%= post.author %> Tidak mencantumkan kontak</p>
+
+                  <% } //end of if contact length %>
+                </div>
               </div>
             </div>
 
