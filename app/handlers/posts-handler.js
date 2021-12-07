@@ -17,14 +17,16 @@ const postsHandler = (req, res) => {
 
 const postsByCategoryHandler = (req, res) => {
   getPosts((posts) => {
-    const postFilteredByCategory = posts.filter((post) => (
-      post.category === req.params.categoryName
+    const postUndoneFilteredByCategory = posts.filter((post) => (
+      !post.done && post.category === req.params.categoryName
     ));
+
     const { categoryName } = req.params;
+
     res.render('posts', {
       title: `Postingan kategori ${categoryName}`,
       user: req.user,
-      posts: postFilteredByCategory,
+      posts: postUndoneFilteredByCategory,
       subTitle: `Postingan berdasarkan kategori <b>${categoryName}</b>`,
       isPostEmptyMessage: `Postingan berdasarkan kategori <b>${categoryName}</b> Kosong!`,
       notif: req.flash('notif'),
