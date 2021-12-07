@@ -3,7 +3,11 @@ const authPlatformMiddleware = require('../middleware/auth-platform-middleware')
 const { authCheckerMiddleware } = require('../middleware/auth-checker-middleware');
 const { homeHandler } = require('../handlers/home-handler');
 const {
-  postsHandler, postsByCategoryHandler, postsCreateHandler, postsCreateProcessHandler,
+  postsHandler,
+  postsByCategoryHandler,
+  postsCreateHandler,
+  postsCreateProcessHandler,
+  postsCompleteHandler,
 } = require('../handlers/posts-handler');
 const { educationHandler } = require('../handlers/education-handler');
 const { logoutHandler, authPlatformSuccessHandler } = require('../handlers/auth-handler');
@@ -17,6 +21,7 @@ const Routes = {
     route.get('/posts/category/:categoryName', postsByCategoryHandler);
     route.get('/posts/create', authCheckerMiddleware, postsCreateHandler);
     route.post('/posts/create', authCheckerMiddleware, postsCreateProcessHandler);
+    route.get('/posts/:postId/complete', postsCompleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
     route.get('/auth/google', authPlatformMiddleware, google.request);
     route.get('/auth/github', authPlatformMiddleware, github.request);

@@ -1,12 +1,14 @@
 const path = require('path');
-const { getPosts, postPosts } = require('../models/posts-model');
+const { getPosts, postPosts, putPost } = require('../models/posts-model');
 
 const postsHandler = (req, res) => {
   getPosts((posts) => {
+    const undonePosts = posts.filter((post) => !post.done);
+
     res.render('posts', {
       title: 'Postingan',
       user: req.user,
-      posts,
+      posts: undonePosts,
       subTitle: 'Semua Postingan',
       isPostEmptyMessage: 'Postingan Kosong!',
       notif: req.flash('notif'),
@@ -16,14 +18,16 @@ const postsHandler = (req, res) => {
 
 const postsByCategoryHandler = (req, res) => {
   getPosts((posts) => {
-    const postFilteredByCategory = posts.filter((post) => (
-      post.category === req.params.categoryName
+    const postUndoneFilteredByCategory = posts.filter((post) => (
+      !post.done && post.category === req.params.categoryName
     ));
+
     const { categoryName } = req.params;
+
     res.render('posts', {
       title: `Postingan kategori ${categoryName}`,
       user: req.user,
-      posts: postFilteredByCategory,
+      posts: postUndoneFilteredByCategory,
       subTitle: `Postingan berdasarkan kategori <b>${categoryName}</b>`,
       isPostEmptyMessage: `Postingan berdasarkan kategori <b>${categoryName}</b> Kosong!`,
       notif: req.flash('notif'),
@@ -86,9 +90,22 @@ const postsCreateProcessHandler = (req, res) => {
   });
 };
 
+const postsCompleteHandler = (req, res) => {
+  putPost((req.params.postId), (respond) => {
+    if (respond.status === 200) {
+      req.flash('notif', 'Postingan berhasil dintandai selesai!');
+      res.redirect('/posts');
+    } else {
+      req.flash('notif', 'Postingan gagal ditandai selesai!');
+      res.redirect('/posts');
+    }
+  });
+};
+
 module.exports = {
   postsHandler,
   postsByCategoryHandler,
   postsCreateHandler,
   postsCreateProcessHandler,
+  postsCompleteHandler,
 };

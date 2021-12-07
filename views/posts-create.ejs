@@ -9,7 +9,7 @@
       <input type="text" name="accountId" value="<%= Number(user.id) %>" hidden>
       <input type="text" name="author" value="<%= user.displayName %>" hidden>
       <div class="form-floating mb-3">
-        <input type="text" name="title" id="title" class="form-control" value="" placeholder="Judul" required>
+        <input type="text" name="title" id="title" class="form-control" value="" required>
         <label for="title">Judul</label>
       </div>
 
@@ -28,18 +28,18 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
           <label for="whatsapp">Kontak Whatsapp (opsional)</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="whatsapp-addon" tabindex="0">+62</span>
-            <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value="" placeholder="8XXXXXXX"
-              aria-describedby="whatsapp-addon">
+            <span class="input-group-text" id="whatsapp-addon">+62</span>
+            <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value=""
+              aria-describedby="whatsapp-addon" placeholder="contoh: 85720959031">
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
           <label for="phone">Telepon Seluler</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="phone-addon" tabindex="0">+62</span>
-            <input type="tel" name="phone" id="phone" class="form-control" value="" placeholder="8XXXXXXX"
-              aria-describedby="phone-addon" required>
+            <span class="input-group-text" id="phone-addon">+62</span>
+            <input type="tel" name="phone" id="phone" class="form-control" value="" aria-describedby="phone-addon"
+              placeholder="contoh: 85720959031" required>
           </div>
         </div>
 
@@ -70,7 +70,7 @@
               <option value="0">Hilang</option>
               <option value="1">Temuan</option>
             </select>
-            <label for="goodsStatus">Status</label>
+            <label for="goodsStatus">Status Barang</label>
           </div>
         </div>
 

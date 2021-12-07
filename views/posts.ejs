@@ -8,17 +8,19 @@
   <div class="container my-4">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
-        <!-- post item -->
         <% if(posts.length > 0) { %>
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <% posts.forEach((post) => { %>
+        <!-- post item -->
         <div class="card mb-3 shadow">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
-              <span class="<%= (Number(post.goodsStatus) === 1) ? 'text-success' : 'text-danger' %>"
-                aria-label="<%= (Number(post.goodsStatus) === 1) ? 'Barang temuan' : 'Laporan barang yang hilang' %>"
-                tabindex="0">
-                [<%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>]
+
+              <% const postGoodsStatus=(Number(post.goodsStatus)===1); %>
+
+              <span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
+                aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
+                [<%= postGoodsStatus ? 'Temuan' : 'Hilang' %>]
               </span>
               <span aria-label="judul postingannya adalah <%= post.title %>" tabindex="0"><%= post.title %></span>
             </h3>
@@ -36,53 +38,57 @@
               </small>
             </p>
           </div>
-          <a href="/images/posts/<%= post.image %>" target="_blank" aria-label="gambar postingan">
+          <a href="/images/posts/<%= post.image %>" target="_blank" aria-label="gambar postingan"
+            title="klik untuk melihat gambar penuh">
             <div class="ratio ratio-16x9">
-              <img class="posts-img img-fluid img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
-                class="card-img-top" alt="gambar" title="klik untuk melihat gambar penuh">
+              <div class="posts-img-container text-center bg-black">
+                <img class="posts-img img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
+                  class="card-img-top" alt="gambar">
+              </div>
             </div>
           </a>
           <div class="card-body">
-            <p class="card-text" tabindex="0">
-              <%- post.description %>
-            </p>
+            <div class="card-text" tabindex="0"><%- post.description %></div>
 
-            <p tabindex="0"><b><%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
-              </b></p>
+            <p class="fw-bold" tabindex="0">
+              <%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
+            </p>
             <div class="row">
-              <div class="col-6">
-                <button class="col-12 btn btn-outline-primary" type="button" data-bs-toggle="collapse"
+              <div class="col-12 col-lg-6 col-xl-6">
+                <button class="col-12 btn btn-primary my-1" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseContact<%= post.id %>" aria-expanded="false"
                   aria-controls="collapseContact<%= post.id %>">
                   <i class="fas fa-contact-book fa-fw"></i> Lihat Kontak
                 </button>
               </div>
-              <div class="col-6">
-                <button class="col-12 btn btn-outline-success" data-postID="<%= post.id %>"><i
-                    class="fas fa-share fa-fw share-button"></i> Bagikan</button>
+              <% if (user && Number(user.id) === Number(post.accountId)) { %>
+              <div class="col-12 col-lg-6 col-xl-6">
+                <a class="mark-as-complete col-12 btn btn-success my-1" href="/posts/<%= post.id %>/complete"><i
+                    class="fas fa-check"></i> Tandai
+                  selesai</a>
               </div>
+              <% } %>
             </div>
-
             <div class="collapse" id="collapseContact<%= post.id %>">
               <div class="card card-body shadow">
-                <h4 tabindex="0" aria-label="kontak yang tersedia">Kontak</h4>
+                <p><b tabindex="0" aria-label="kontak yang tersedia">Kontak</b></p>
                 <div class="row">
                   <% const { whatsapp, email, phone } = post.contacts; %>
                   <% if(whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
                   <% if(whatsapp && whatsapp !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
                     href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
                     <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
                   </a>
                   <% } // end of if %>
                   <% if(email && email !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-danger" href="mailto:<%= post.contacts.email %>"
                     aria-label="kontak email">
                     <i class="fas fa-mail-bulk fa-fw"></i> Email
                   </a>
                   <% } // end of if %>
                   <% if(phone && phone !== '') {%>
-                  <a class="col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
+                  <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-primary" href="tel:<%= post.contacts.phone %>"
                     aria-label="kontak telepon seluler">
                     <i class="fas fa-phone fa-fw"></i> Telepon
                   </a>
