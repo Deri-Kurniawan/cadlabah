@@ -3,7 +3,7 @@ const { getPosts, postPosts, putPost } = require('../models/posts-model');
 
 const postsHandler = (req, res) => {
   getPosts((posts) => {
-    const undonePosts = posts.filter((post) => !post.done);
+    const undonePosts = posts.filter((post) => !post.isDone);
 
     res.render('posts', {
       title: 'Postingan',
@@ -19,7 +19,7 @@ const postsHandler = (req, res) => {
 const postsByCategoryHandler = (req, res) => {
   getPosts((posts) => {
     const postUndoneFilteredByCategory = posts.filter((post) => (
-      !post.done && post.category === req.params.categoryName
+      !post.isDone && post.category === req.params.categoryName
     ));
 
     const { categoryName } = req.params;
@@ -76,7 +76,6 @@ const postsCreateProcessHandler = (req, res) => {
     },
     isDone: false,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   };
 
   postPosts(setPosts, (respond) => {
