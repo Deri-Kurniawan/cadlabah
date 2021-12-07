@@ -5,9 +5,9 @@ const { homeHandler } = require('../handlers/home-handler');
 const {
   postsHandler,
   postsByCategoryHandler,
-  postsCreateHandler,
-  postsCreateProcessHandler,
-  postsCompleteHandler,
+  postCreateHandler,
+  postCreateProcessHandler,
+  postCompleteHandler,
 } = require('../handlers/posts-handler');
 const { educationHandler } = require('../handlers/education-handler');
 const { logoutHandler, authPlatformSuccessHandler } = require('../handlers/auth-handler');
@@ -19,9 +19,9 @@ const Routes = {
     route.get('/home', homeHandler);
     route.get('/posts', postsHandler);
     route.get('/posts/category/:categoryName', postsByCategoryHandler);
-    route.get('/posts/create', authCheckerMiddleware, postsCreateHandler);
-    route.post('/posts/create', authCheckerMiddleware, postsCreateProcessHandler);
-    route.get('/posts/:postId/complete', postsCompleteHandler);
+    route.get('/post/create', authCheckerMiddleware, postCreateHandler);
+    route.post('/post/create', authCheckerMiddleware, postCreateProcessHandler);
+    route.get('/post/:postId/complete', postCompleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
     route.get('/auth/google', authPlatformMiddleware, google.request);
     route.get('/auth/github', authPlatformMiddleware, github.request);
@@ -30,6 +30,18 @@ const Routes = {
     route.get('/auth/success', authPlatformSuccessHandler);
     route.get('/google/callback', google.verify);
     route.get('/github/callback', github.verify);
+
+    /**
+     * plurals route redirect and sensitive url path handler
+     */
+    route.get('/post', (req, res) => res.redirect('/posts'));
+    route.get('/posts/', (req, res) => res.redirect('/posts'));
+    route.get('/posts/create', (req, res) => res.redirect('/post/create'));
+    route.get('/posts/category', (req, res) => res.redirect('/posts'));
+    route.get('/posts/category/', (req, res) => res.redirect('/posts'));
+    route.get('/edu', (req, res) => res.redirect('/edu/tips-dan-trik'));
+    route.get('/edu/', (req, res) => res.redirect('/edu/tips-dan-trik'));
+
     route.use('/', pageNotFoundHandler);
   },
 };

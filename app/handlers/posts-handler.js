@@ -3,7 +3,7 @@ const { getPosts, postPosts, putPost } = require('../models/posts-model');
 
 const postsHandler = (req, res) => {
   getPosts((posts) => {
-    const undonePosts = posts.filter((post) => !post.done);
+    const undonePosts = posts.filter((post) => !post.isDone);
 
     res.render('posts', {
       title: 'Postingan',
@@ -19,7 +19,7 @@ const postsHandler = (req, res) => {
 const postsByCategoryHandler = (req, res) => {
   getPosts((posts) => {
     const postUndoneFilteredByCategory = posts.filter((post) => (
-      !post.done && post.category === req.params.categoryName
+      !post.isDone && post.category === req.params.categoryName
     ));
 
     const { categoryName } = req.params;
@@ -35,7 +35,7 @@ const postsByCategoryHandler = (req, res) => {
   });
 };
 
-const postsCreateHandler = (req, res) => {
+const postCreateHandler = (req, res) => {
   res.render('posts-create', {
     title: 'Buat Postingan',
     user: req.user,
@@ -43,7 +43,7 @@ const postsCreateHandler = (req, res) => {
   });
 };
 
-const postsCreateProcessHandler = (req, res) => {
+const postCreateProcessHandler = (req, res) => {
   const {
     accountId,
     author,
@@ -76,7 +76,6 @@ const postsCreateProcessHandler = (req, res) => {
     },
     isDone: false,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   };
 
   postPosts(setPosts, (respond) => {
@@ -85,12 +84,12 @@ const postsCreateProcessHandler = (req, res) => {
       res.redirect('/posts');
     } else {
       req.flash('notif', 'Postingan gagal dibuat!');
-      res.redirect('/posts/create');
+      res.redirect('/post/create');
     }
   });
 };
 
-const postsCompleteHandler = (req, res) => {
+const postCompleteHandler = (req, res) => {
   putPost((req.params.postId), (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dintandai selesai!');
@@ -105,7 +104,7 @@ const postsCompleteHandler = (req, res) => {
 module.exports = {
   postsHandler,
   postsByCategoryHandler,
-  postsCreateHandler,
-  postsCreateProcessHandler,
-  postsCompleteHandler,
+  postCreateHandler,
+  postCreateProcessHandler,
+  postCompleteHandler,
 };
