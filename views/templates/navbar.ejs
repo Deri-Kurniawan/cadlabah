@@ -111,4 +111,117 @@
       document.querySelector('#logoutYesConfirm').click();
     }
   });
+</script><nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top" id="navbar">
+  <div class="container">
+    <h1 class="navbar-brand p-0 m-0">
+      <a class="navbar-brand" href="/" aria-label="cadlabah brand logo">
+        CADLABAH
+      </a>
+    </h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <li class="nav-item">
+          <a class="nav-link <%= (title.toLowerCase() === 'home') ? 'active' : '' %>" href="/home">Beranda</a>
+        </li>
+        <li class="nav-item mobile-hide">
+          <a class="nav-link <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
+            href="/posts">Postingan</a>
+        </li>
+        <li class="nav-item dropdown mobile-show">
+          <a class="nav-link dropdown-toggle <%= (title.toLowerCase() === 'postingan' || title.toLowerCase() === 'buat postingan' || title.toLowerCase() === 'postingan kategori accessories' || title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
+            href="#" id="posts-category" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Kategori Postingan
+          </a>
+          <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="posts-category">
+            <li><a class="dropdown-item <%= (title.toLowerCase() === 'postingan') ? 'active' : '' %>"
+                href="/posts">Semua</a></li>
+            <li><a
+                class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori accessories') ? 'active' : '' %>"
+                href="/posts/category/accessories">Aksesoris</a></li>
+            <li><a
+                class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
+                href="/posts/category/electronic">Elektronik</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= (title.toLowerCase() === 'edukasi') ? 'active' : '' %>"
+            href="/edu/tips-dan-trik">Edukasi</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="dropdown btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
+            data-bs-display="static" aria-expanded="false" id="buttonLogInToggler"
+            aria-label="Menu <%= user ? user.displayName : 'Tamu' %>">
+            <i class="fas fa-user"></i>
+            <%= user ? user.displayName : 'Tamu' %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-lg-end shadow" aria-labelledby="dropdownMenuLink">
+            <% if (!user) { %>
+            <li>
+              <a class="dropdown-item" href="/auth/google">
+                <i class="fab fa-google fa-fw text-primary"></i> Masuk Dengan Google
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/auth/github">
+                <i class="fab fa-github fa-fw text-dark"></i> Masuk Dengan Github
+              </a>
+            </li>
+            <% } else { %>
+            <!-- logout modal trigger -->
+            <li>
+              <a class="dropdown-item" href="/post/create">
+                <i class="fas fa-pen fa-fw text-success"></i> Buat Postingan
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="fas fa-sign-out fa-fw text-danger"></i> Keluar
+              </a>
+            </li>
+            <!-- end logout modal trigger -->
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>
+
+<!-- logout modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 aria-label="konfirmasi keluar.">Konfirmasi Keluar</h5>
+      </div>
+      <div class="modal-body">
+        <h6 class="mt-2"
+          aria-label="Sesi masuk akan dihapus. Yakin ingin keluar?. tekan escape untuk batal keluar. dan tekan enter untuk keluar.">
+          Sesi masuk akan dihapus. Yakin ingin keluar?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="logoutNoConfirm"
+          aria-label="Batal.">Batal <span class="logout-confirm badge bg-light text-dark">Escape</span></button>
+        <a href="/logout" class="btn btn-success" id="logoutYesConfirm" aria-label="Yakin.">Yakin <span
+            class="logout-confirm badge bg-light text-dark">Enter</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of logout modal -->
+
+<script>
+  const logoutModalElement = document.querySelector('#logoutModal');
+  logoutModalElement.addEventListener('keyup', (ev) => {
+    if (ev.keyCode === 27) {
+      document.querySelector('#logoutNoConfirm').click();
+    } else if (ev.keyCode === 13) {
+      document.querySelector('#logoutYesConfirm').click();
+    }
+  });
 </script>
