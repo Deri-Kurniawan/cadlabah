@@ -4,8 +4,9 @@
   <div class="container my-4">
     <h2 tabindex="0">Tips & Trik</h2>
 
-    <div class="my-4">
-      <h3 tabindex="0">Hal yang perlu diperhatikan ketika barang masih ada atau belum hilang</h3>
+    <div class="my-4" data-aos="fade-in" data-aos-offset="-10">
+      <h3 tabindex="0" data-aos="fade-in" data-aos-offset="-10">Hal yang perlu diperhatikan ketika barang masih ada atau
+        belum hilang</h3>
       <p tabindex="0">Hal pertama yang anda perlu lakukan yaitu anda wajib mendokumentasikan barang berharga anda dalam
         bentuk foto.
         nantinya suatu saat ketika barang berharga anda hilang, anda bisa memposting foto barang berharga
@@ -19,7 +20,7 @@
         seperti tulisan nama anda pada bagian yang sulit diketahui orang lain.</p>
     </div>
 
-    <div class="my-4">
+    <div class="my-4" data-aos="fade-in" data-aos-offset="-10">
       <h3 tabindex="0">Hal yang perlu diperhatikan ketika anda memposting barang anda yang hilang</h3>
       <p tabindex="0"> Hal pertama yang perlu anda lakukan yaitu usahakan ketika anda memposting barang anda yang
         hilang. pastikan
@@ -36,7 +37,7 @@
         unik barang tersebut.</p>
     </div>
 
-    <div class="my-4">
+    <div class="my-4" data-aos="fade-in" data-aos-offset="-10">
       <h3 tabindex="0">Hal yang perlu diperhatikan ketika anda memposting barang temuan</h3>
       <p tabindex="0">Hal pertama yang perlu anda lakukan yaitu usahakan anda jangan langsung memberikan barang temuan
         tersebut
@@ -50,11 +51,17 @@
 
       <h3 tabindex="0">Hal yang perlu dilakukan ketika barang sudah ditemukan atau diklaim</h3>
       <p tabindex="0">Ketika anda memposting barang hilang maupun memposting barang temuan, anda diharapkan untuk
-        menghapus postingan
+        menekan tombol "tandai selesai" pada postingan
         tersebut ketika barangnya telah diklaim atau ditemukan.</p>
     </div>
   </div>
 </main>
 
-<div><%- include('templates/copyright') %>
-  <%- include('templates/footer') %>
+<script>
+  AOS.init({
+    once: true,
+  });
+</script>
+
+<%- include('templates/copyright') %>
+<%- include('templates/footer') %>

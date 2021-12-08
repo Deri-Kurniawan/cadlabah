@@ -4,27 +4,27 @@
 <%- include('templates/navbar') %>
 <main tabindex="0" id="mainContent" aria-label="konten utama">
   <div class="container my-4">
-    <h2 tabindex="0">Buat Postingan</h2>
+    <h2 tabindex="0" data-aos="fade-in">Buat Postingan</h2>
     <form action="/post/create" method="post" enctype="multipart/form-data">
       <input type="text" name="accountId" value="<%= Number(user.id) %>" hidden>
       <input type="text" name="author" value="<%= user.displayName %>" hidden>
-      <div class="form-floating mb-3">
-        <input type="text" name="title" id="title" class="form-control" value="" required>
+      <div class="form-floating mb-3" data-aos="fade-in">
+        <input type="text" name="title" id="title" class="form-control" value="" placeholder="judul" required>
         <label for="title">Judul</label>
       </div>
 
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" data-aos="fade-in">
         <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
         <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" data-aos="fade-in">
         <label for="description">Keterangan</label>
         <textarea name="description" id="description" class="form-control" value="" placeholder="Keterangan"
           style="height: 10em"></textarea>
       </div>
 
-      <div class="row">
+      <div class="row" data-aos="fade-in">
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
           <label for="whatsapp">Kontak Whatsapp (opsional)</label>
           <div class="input-group mb-3">
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-in">
           <label for="phone">Telepon Seluler</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="phone-addon">+62</span>
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4" data-aos="fade-in">
           <label for="email">Email (opsional)</label>
           <div class="input-group mb-3">
             <input type="email" name="email" id="email" class="form-control" value="" placeholder="foo@contoh.com">
@@ -53,7 +53,7 @@
 
       <div class="row">
         <div class="col">
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-3" data-aos="fade-in">
             <select name="category" id="caategory" class="form-control" value="" placeholder="Kategori" required>
               <option value="">Pilih Kategori Barang</option>
               <option value="electronic">Elektronik</option>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="col">
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-3" data-aos="fade-in">
             <select name="goodsStatus" id="goodsStatus" class="form-control" value="" placeholder="Kategori" required>
               <option value="">Pilih Status Barang</option>
               <option value="0">Hilang</option>
@@ -76,7 +76,8 @@
 
       </div>
 
-      <button type="submit" class="btn btn-outline-success col-12 col-lg-6 offset-lg-3">Posting</button>
+      <button type="submit" class="btn btn-outline-success col-12 col-lg-6 offset-lg-3"
+        data-aos="fade-in">Posting</button>
 
     </form>
   </div>
@@ -90,6 +91,11 @@
     selector: 'textarea',
     plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
     toolbar_mode: 'floating',
+  });
+
+  AOS.init({
+    once: true,
+    offset: -10,
   });
 </script>
 

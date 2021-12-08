@@ -16,6 +16,7 @@
       "no-console": "off",
       "no-underscore-dangle": "off",
       "quote-props": "off",
-      "no-plusplus": "off"
+      "no-plusplus": "off",
+      "no-undef": "off"
     }
 }
