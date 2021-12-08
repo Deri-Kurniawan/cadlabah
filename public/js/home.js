@@ -14,3 +14,8 @@ window.addEventListener('scroll', () => {
     buttonLogInToggler.classList.replace('btn-outline-primary', 'btn-primary');
   }
 });
+
+// Animation On Scroll
+AOS.init({
+  mirror: false,
+});

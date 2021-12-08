@@ -12,7 +12,7 @@
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <% posts.forEach((post) => { %>
         <!-- post item -->
-        <div class="card mb-3 shadow">
+        <div class="card mb-3 shadow" data-aos="fade-up" data-aos-offset="-5">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
 
@@ -43,7 +43,7 @@
             <div class="ratio ratio-16x9">
               <div class="posts-img-container text-center bg-black">
                 <img class="posts-img img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
-                  class="card-img-top" alt="gambar">
+                  class="card-img-top" alt="gambar" data-aos="zoom-in">
               </div>
             </div>
           </a>
@@ -118,5 +118,12 @@
   <%- include('templates/copyright') %>
 </div>
 
+<script>
+  AOS.init({
+    once: true,
+  });
+</script>
+
 <%- include('templates/flash') %>
+
 <%- include('templates/footer') %>

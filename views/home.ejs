@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/home.css">
 <%- include('templates/navbar') %>
 <main tabindex="0" id="mainContent" aria-label="konten utama">
-  <header>
+  <header data-aos="slide-down">
     <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 100" version="1.1"
       xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -21,31 +21,31 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-md-6">
           <div class="my-5">
-            <div class="three-circle">
+            <div class="three-circle" data-aos="zoom-in">
               <div></div>
               <div></div>
               <div></div>
             </div>
-            <h2 class="display-2 text-center fw-bold m-0 p-0" tabindex="0">CADLABAH</h2>
+            <h2 class="display-2 text-center fw-bold m-0 p-0" tabindex="0" data-aos="slide-right">CADLABAH</h2>
             <p class="text-center" aria-label="kepanjangan dari cadlabah adalah cari dan lapor barang hilang"
-              tabindex="0">
+              tabindex="0" data-aos="fade-down">
               <b>Ca</b>ri
               <b>D</b>an <b>La</b>por <b>Ba</b>rang <b>H</b>ilang</p>
-            <a class="btn btn-primary col-6 offset-3 mt-5 mt-md-2 mt-lg-3 mt-xl-5 rounded-pill fs-5" href="/posts"><i
-                class="fas fa-search fa-fw"></i>
+            <a class="btn btn-primary col-6 offset-3 mt-5 mt-md-2 mt-lg-3 mt-xl-5 rounded-pill fs-5" href="/posts"
+              data-aos="fade-up"><i class="fas fa-search fa-fw"></i>
               Jelajahi</a>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-md-6">
           <a href="https://www.vecteezy.com/free-vector/thinking" target="_blank" rel="norefferer" aria-label="">
             <img class="col-12 img-fluid my-md-4" src="./images/illustration/Peopleaskquestions.jpg"
-              alt="Thinking Vectors by Vecteezy" title="Thinking Vectors by Vecteezy">
+              alt="Thinking Vectors by Vecteezy" title="Thinking Vectors by Vecteezy" data-aos="slide-left">
           </a>
         </div>
       </div>
     </section>
     <section>
-      <header>
+      <header data-aos="slide-up">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path fill="#0d6efd" fill-opacity="1"
             d="M0,288L40,282.7C80,277,160,267,240,245.3C320,224,400,192,480,181.3C560,171,640,181,720,197.3C800,213,880,235,960,224C1040,213,1120,171,1200,149.3C1280,128,1360,128,1400,128L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
@@ -53,20 +53,23 @@
         </svg>
       </header>
       <div class="bg-primary text-light">
-        <h3 class="text-center fw-bold display-5 pb-5 m-0" tabindex="0">Analitik</h3>
+        <h3 class="text-center fw-bold display-5 pb-5 m-0" tabindex="0" data-aos="fade-down">Analitik</h3>
         <div class="row text-center">
-          <div class="col-4 analytic" tabindex="0" aria-label="total pengguna saat ini adalah <%= usersTotal %> orang">
+          <div class="col-4 analytic" tabindex="0" aria-label="total pengguna saat ini adalah <%= usersTotal %> orang"
+            data-aos="fade-up-right" data-aos-delay="100">
             <i class="fas fa-user-circle d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= usersTotal %></span>
             <span class="d-block mt-1 analytic-title">Pengguna</span>
           </div>
-          <div class="col-4 analytic" tabindex="0" aria-label="total postingan saat ini adalah <%= postsTotal %>">
+          <div class="col-4 analytic" tabindex="0" aria-label="total postingan saat ini adalah <%= postsTotal %>"
+            data-aos="fade-up" data-aos-delay="200">
             <i class="fas fa-paper-plane d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= postsTotal %></span>
             <span class="d-block mt-1 analytic-title">Postingan</span>
           </div>
           <div class="col-4 analytic" tabindex="0"
-            aria-label="total orang yang telah terbantu saat ini adalah <%= helpedTotal %> orang">
+            aria-label="total orang yang telah terbantu saat ini adalah <%= helpedTotal %> orang"
+            data-aos="fade-up-left" data-aos-delay="300">
             <i class="fas fa-check-circle d-block analytic-icon"></i>
             <span class="d-block mt-2 analytic-value"><%= helpedTotal %></span>
             <span class="d-block mt-1 analytic-title">Orang Terbantu</span>
@@ -86,10 +89,10 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-lg-6 py-4">
-              <h3 class="text-center display-5 fw-bold m-0" tabindex="0">Apa itu CADLABAH?</h3>
+              <h3 class="text-center display-5 fw-bold m-0" tabindex="0" data-aos="fade-right">Apa itu CADLABAH?</h3>
             </div>
             <div class="col-12 col-lg-6">
-              <p class="text-center fs-4" tabindex="0">
+              <p class="text-center fs-4" tabindex="0" data-aos="fade-up" data-aos-delay="200">
                 CADLABAH adalah sebuah aplikasi website untuk pencarian dan pelaporan barang hilang berbentuk sebuah
                 postingan yang dapat dilihat oleh seluruh pengguna atau pengunjung website.
               </p>
@@ -100,7 +103,7 @@
     </section>
     <section>
       <div class="my-5">
-        <header>
+        <header data-aos="slide-up">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#0d6efd" fill-opacity="1"
               d="M0,288L40,282.7C80,277,160,267,240,245.3C320,224,400,192,480,181.3C560,171,640,181,720,197.3C800,213,880,235,960,224C1040,213,1120,171,1200,149.3C1280,128,1360,128,1400,128L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
@@ -109,13 +112,15 @@
         </header>
         <div class="bg-primary text-light text-center">
           <div class="container">
-            <h3 class="text-center fw-bold display-5 pb-2 m-0" tabindex="0">Ayo bergabung!</h3>
-            <p class="pb-4" tabindex="0">Dan saling membantu satu sama lain</p>
-            <a class="btn btn-light mx-1 my-2" href="/auth/google"><i class="fab fa-google fa-fw text-primary"></i>
+            <h3 class="text-center fw-bold display-5 pb-2 m-0" tabindex="0" data-aos="fade-up">Ayo bergabung!</h3>
+            <p class="pb-4" tabindex="0" data-aos="fade-in">Dan saling membantu satu sama lain</p>
+            <a class="btn btn-light mx-1 my-2" href="/auth/google" data-aos="fade-right"><i
+                class="fab fa-google fa-fw text-primary" data-aos="zoom-in" data-aos-delay="300"></i>
               Masuk
               dengan
               Google</a>
-            <a class="btn btn-light mx-1 my-2" href="/auth/github"><i class="fab fa-github fa-fw text-dark"></i> Masuk
+            <a class="btn btn-light mx-1 my-2" href="/auth/github" data-aos="fade-left"><i
+                class="fab fa-github fa-fw text-dark" data-aos="zoom-in" data-aos-delay="300"></i> Masuk
               dengan
               Github</a>
           </div>
