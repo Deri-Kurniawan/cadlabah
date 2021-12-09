@@ -40,8 +40,8 @@
           </div>
           <a href="/images/posts/<%= post.image %>" target="_blank" aria-label="gambar postingan"
             title="klik untuk melihat gambar penuh">
-            <div class="ratio ratio-16x9">
-              <div class="posts-img-container text-center bg-black">
+            <div class="ratio ratio-16x9 d-flex">
+              <div class="posts-img-container text-center bg-black m-auto">
                 <img class="posts-img img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
                   class="card-img-top" alt="gambar" data-aos="zoom-in">
               </div>
@@ -114,9 +114,7 @@
   </div>
 </main>
 
-<div class="fixed-bottom">
-  <%- include('templates/copyright') %>
-</div>
+<%- include('templates/copyright') %>
 
 <script>
   AOS.init({
