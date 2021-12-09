@@ -33,7 +33,7 @@ const authPlatformSuccessHandler = async (req, res) => {
 
       default:
         req.flash('notif', 'Opps.. login gagal! \nCoba lagi nanti');
-        res.redirect('back');
+        res.redirect('/');
         break;
     }
 
@@ -54,7 +54,7 @@ const authPlatformSuccessHandler = async (req, res) => {
   }
 
   req.flash('notif', 'Login Sukses!');
-  res.redirect('back');
+  res.redirect('/');
 };
 
 const logoutHandler = (req, res) => {
