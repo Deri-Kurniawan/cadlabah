@@ -43,7 +43,7 @@
         <div class="dropdown btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
             data-bs-display="static" aria-expanded="false" id="buttonLogInToggler"
-            aria-label="Menu <%= user ? user.displayName : 'Tamu' %>">
+            aria-label="Menu <%= user ? `Pengguna ${user.displayName}` : 'Tamu' %>">
             <i class="fas fa-user"></i>
             <%= user ? user.displayName : 'Tamu' %>
           </button>
