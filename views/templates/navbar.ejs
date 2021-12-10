@@ -32,6 +32,11 @@
             <li><a
                 class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori electronic') ? 'active' : '' %>"
                 href="/posts/category/electronic">Elektronik</a></li>
+            <li><a
+                class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori automotive') ? 'active' : '' %>"
+                href="/posts/category/automotive">Otomotif</a></li>
+            <li><a class="dropdown-item <%= (title.toLowerCase() === 'postingan kategori clothes') ? 'active' : '' %>"
+                href="/posts/category/clothes">Pakaian</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -43,7 +48,7 @@
         <div class="dropdown btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown"
             data-bs-display="static" aria-expanded="false" id="buttonLogInToggler"
-            aria-label="Menu <%= user ? user.displayName : 'Tamu' %>">
+            aria-label="Menu <%= user ? `Pengguna ${user.displayName}` : 'Tamu' %>">
             <i class="fas fa-user"></i>
             <%= user ? user.displayName : 'Tamu' %>
           </button>
