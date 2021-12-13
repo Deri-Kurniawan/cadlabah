@@ -10,17 +10,17 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <% if(posts.length > 0) { %>
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
-        <% posts.forEach((post) => { %>
+        <% posts.forEach((post, i) => { %>
         <!-- post item -->
-        <div class="card mb-3 shadow" data-aos="fade-up" data-aos-offset="-5">
+        <div class="card mb-3 shadow" data-aos="fade-up" data-aos-offset="-5" tabindex="0" aria-label="postingan ke-<%= ++i %>">
           <div class="card-header">
-            <h3 class="card-title my-2 text-capitalize" tabindex="0">
+            <h3 class="card-title my-2 text-capitalize">
 
               <% const postGoodsStatus=(Number(post.goodsStatus)===1); %>
 
               <span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
                 aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
-                [<%= postGoodsStatus ? 'Temuan' : 'Hilang' %>]
+                <%- postGoodsStatus ? '<i class="fas fa-box"></i> Temuan' : '<i class="fas fa-exclamation-triangle"></i> Hilang' %>
               </span>
               <span aria-label="judul postingannya adalah <%= post.title %>" tabindex="0"><%= post.title %></span>
             </h3>
@@ -32,9 +32,12 @@
                   </div>
                 </a>
               </div>
+            <% const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]; %>
               <small class="text-muted text-capitalize" tabindex="0">
-                Diposting oleh <i class="fas fa-user fa-fw"></i> <%= post.author %> pada
-                <%= new Date(post.createdAt).toLocaleString() %>
+                Diposting oleh <i class="fas fa-user fa-fw"></i> <b><%= post.author %></b> pada
+                <b>
+                  <i class="fas fa-calendar"></i> <%= `${new Date(post.createdAt).getDate()} ${monthNames[new Date(post.createdAt).getMonth()]} ${new Date(post.createdAt).getFullYear()}` %>
+                </b>
               </small>
             </p>
           </div>
@@ -50,8 +53,11 @@
           <div class="card-body">
             <div class="card-text" tabindex="0"><%- post.description %></div>
 
-            <p class="fw-bold" tabindex="0">
-              <%= (post.goodsStatus === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
+            <h4 class="fs-5" tabindex="0">
+              <%= (Number(post.goodsStatus) === 1) ? 'Merasa itu barangmu?' : 'Merasa Menemukan Barangnya?' %>
+            </h4>
+            <p tabindex="0">
+              <%= (Number(post.goodsStatus) === 1) ? 'Hubungi penemu barang dengan kotak dibawah ini' : 'Hubungi kontak dibawah dan kembalikan barangnya.' %>
             </p>
             <div class="row">
               <div class="col-12 col-lg-6 col-xl-6">
