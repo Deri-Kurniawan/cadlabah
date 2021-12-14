@@ -7,7 +7,7 @@
     "start": "env MODE=production SERVER_PORT=9000 nodemon .",
     "start-dev": "env MODE=development SERVER_PORT=9000 nodemon .",
     "lint": "eslint ./",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "e2e": "codeceptjs run --steps"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Capstone-CSD-196/cadlabah#readme",
   "dependencies": {
+    "@codeceptjs/configure": "^0.7.0",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
@@ -43,8 +44,10 @@
     "passport-google-oauth2": "^0.2.0"
   },
   "devDependencies": {
+    "codeceptjs": "^3.2.2",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3"
+    "eslint-plugin-import": "^2.25.3",
+    "puppeteer": "^13.0.0"
   }
 }
