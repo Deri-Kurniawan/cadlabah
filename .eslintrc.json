@@ -17,6 +17,7 @@
       "no-underscore-dangle": "off",
       "quote-props": "off",
       "no-plusplus": "off",
-      "no-undef": "off"
+      "no-undef": "off",
+      "func-names": "off"
     }
 }
