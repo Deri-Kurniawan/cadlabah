@@ -43,7 +43,7 @@
               </small>
             </p>
           </div>
-          <a href="/images/posts/<%= post.image %>" target="_blank" aria-label="gambar postingan"
+          <a href="/images/posts/<%= post.image %>" target="_blank" rel="noopener" aria-label="gambar postingan"
             title="klik untuk melihat gambar penuh">
             <div class="ratio ratio-16x9 d-flex">
               <div class="posts-img-container text-center bg-black m-auto">
@@ -85,7 +85,7 @@
                   <% if (whatsapp && whatsapp !== '' || email && email !== '' || phone && phone !== '') { %>
                   <% if (whatsapp && whatsapp !== '') {%>
                   <a class="col-12 col-lg-3 mx-lg-1 my-1 btn btn-success" aria-label="kontak whatsapp"
-                    href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank">
+                    href="https://api.whatsapp.com/send?phone=<%= whatsapp %>" target="_blank" rel="noopener">
                     <i class="fab fa-whatsapp fa-fw"></i> Whatsapp
                   </a>
                   <% } // end of if %>
