@@ -3,7 +3,7 @@ CADLABAH App adalah sebuah aplikasi website untuk pencarian dan pelaporan barang
 
 Deployed on https://cadlabah.glitch.me
 
-# Getting Started
+## Getting Started
 ### Install Dependencies
 `npm install`
 
