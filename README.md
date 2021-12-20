@@ -1,7 +1,7 @@
 # CADLABAH
 CADLABAH App adalah sebuah aplikasi website untuk pencarian dan pelaporan barang hilang berbentuk sebuah postingan yang dapat dilihat oleh seluruh pengguna.
 
-Deployed on https://cadlabah.glitch.me (WAIT UNTIL THE APPLICATION WAS UP AND READY)
+Deployed on https://cadlabah.glitch.me (TUNGGU APLIKASI SAMPAI AKTIF)
 
 ## Fitur Aplikasi
 1. Posting Pengumuman berisi 2 pilihan yaitu post barang hilang dan post barang temuan. [Menuju Fitur](https://cadlabah.glitch.me/post/create) (Harus Login)
