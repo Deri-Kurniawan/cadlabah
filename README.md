@@ -3,25 +3,10 @@ CADLABAH App adalah sebuah aplikasi website untuk pencarian dan pelaporan barang
 
 Deployed on https://cadlabah.glitch.me
 
-## Getting Started
-### Install Dependencies
-`npm install`
+## Library & API Yang Digunakan
+1. [Daftar Library & API By Github](https://github.com/Capstone-CSD-196/cadlabah/network/dependencies)
+2. [Tiny](https://www.tiny.cloud/about)
+3. [Mockapi](https://mockapi.io/about)
 
-### Run Production Mode
-`npm start`
-
-### Run Development Mode
-`npm run start-dev`
-
-### Run Custom Mode & Custom Port
-`env MODE=development SERVER_PORT=8000 nodemon .`
-
-or
-
-`env MODE=production SERVER_PORT=9000 nodemon .`
-
-### Run Eslint Style Guide Testing
-`npm run lint`
-
-### Run E2E Testing (Development server must be running)
-`npm run e2e`
+## Statistik Kontributor
+[Daftar Kontributor](https://github.com/Capstone-CSD-196/cadlabah/graphs/contributors)
