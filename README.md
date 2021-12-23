@@ -73,7 +73,7 @@ Ada 2 mode aplikasi yaitu:
 
     - cara merubah mode & port:
       
-      `env MODE=development PORT=8000`
+      `env MODE=development PORT=8000 nodemon .`
 
 2. **Production**
     - cara menjalankan: 
@@ -82,7 +82,7 @@ Ada 2 mode aplikasi yaitu:
 
     - cara merubah mode & port: 
     
-      `env MODE=production PORT=3000`
+      `env MODE=production PORT=3000 nodemon .`
 
 ### Testing Aplikasi
 Untuk melakukan *testing* pada aplikasi, kami menyediakan 2 *test* yaitu:
