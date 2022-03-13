@@ -12,7 +12,7 @@
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <% posts.forEach((post, i) => { %>
         <!-- post item -->
-        <div class="card mb-3 shadow posts-item" data-aos="fade-up" data-aos-offset="-5" tabindex="0"
+        <div class="card mb-3 shadow posts-item" data-aos="fade" data-aos-offset="-5" tabindex="0"
           aria-label="postingan ke-<%= ++i %>">
           <div class="card-header">
             <h3 class="card-title my-2 text-capitalize">
@@ -48,7 +48,7 @@
             <div class="ratio ratio-16x9 d-flex">
               <div class="posts-img-container text-center bg-black m-auto">
                 <img class="posts-img img-thumbnail lazyload" data-src="/images/posts/<%= post.image %>"
-                  class="card-img-top" alt="gambar" data-aos="zoom-in">
+                  class="card-img-top" alt="gambar" data-aos="fade" data-aos-offset="-5">
               </div>
             </div>
           </a>
