@@ -10,6 +10,20 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
         <% if (posts.length > 0) { %>
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
+        <!-- form post searcher -->
+        <form action="" method="get">
+          <input type="search" name="keywords" id="keywords">
+          <select name="category" id="category">
+            <option value="all">Semua</option>
+            <option value="accessories">Aksesoris</option>
+            <option value="electronics">Elektronik</option>
+            <option value="automotive">Otomotif</option>
+            <option value="clotes">Pakaian</option>
+          </select>
+          <button><i class="fas fa-search"></i></button>
+        </form>
+        <!-- end of form post searcher -->
+
         <% posts.forEach((post, i) => { %>
         <!-- post item -->
         <div class="card mb-3 shadow posts-item" data-aos="fade-up" data-aos-offset="-5" tabindex="0"
