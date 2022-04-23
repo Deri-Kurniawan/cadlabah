@@ -4,6 +4,7 @@ const {
   postPosts,
   putPost,
   deletePost,
+  getPost,
 } = require('../models/posts-model');
 
 const postsHandler = (req, res) => {
@@ -41,7 +42,7 @@ const postsByCategoryHandler = (req, res) => {
 };
 
 const postCreateHandler = (req, res) => {
-  res.render('posts-create', {
+  res.render('post-create', {
     title: 'Buat Postingan',
     user: req.user,
     notif: req.flash('notif'),
@@ -90,6 +91,69 @@ const postCreateProcessHandler = (req, res) => {
     } else {
       req.flash('notif', 'Postingan gagal dibuat!');
       res.redirect('/post/create');
+    }
+  });
+};
+
+const postDetailHandler = (req, res) => {
+  res.end('test');
+};
+
+const postEditHandler = (req, res) => {
+  getPost(req.params.postId, (post) => {
+    if (post.length === 0) {
+      req.flash('notif', 'Postingan tidak ditemukan!');
+      res.redirect('/posts');
+    }
+
+    res.render('post-edit', {
+      title: 'Ubah Postingan',
+      user: req.user,
+      post,
+      notif: req.flash('notif'),
+    });
+  });
+};
+
+const postUpdateProcessHandler = (req, res) => {
+  const {
+    postId,
+    author,
+    title,
+    description,
+    whatsapp,
+    phone,
+    email,
+    category,
+    goodsStatus,
+  } = req.body;
+
+  const { name, mv } = req.files.image;
+  const imageName = Date.now() + name;
+
+  mv(path.join(__dirname, `../../public/images/posts/${imageName}`));
+
+  const setPost = {
+    image: imageName,
+    title,
+    author,
+    category,
+    description,
+    goodsStatus,
+    contacts: {
+      whatsapp: (whatsapp) ? `+62${whatsapp}` : '',
+      phone: (phone) ? `+62${phone}` : '',
+      email,
+    },
+  };
+
+  putPost(postId, setPost, (respond) => {
+    if (respond.status === 201) {
+      req.flash('notif', 'Postingan berhasil diubah!');
+      res.redirect('/posts/my');
+    } else {
+      req.flash('notif', 'Postingan gagal diubah!');
+      res.redirect('/posts/my');
     }
   });
 };
@@ -155,6 +219,9 @@ module.exports = {
   postCreateProcessHandler,
   postCompleteHandler,
   postUncompleteHandler,
+  postDetailHandler,
+  postEditHandler,
   postDeleteHandler,
   myPostsHandler,
+  postUpdateProcessHandler,
 };

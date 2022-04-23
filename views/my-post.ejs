@@ -30,9 +30,10 @@
             <a href="/post/<%= post.id %>/complete" class="btn btn-success" title="tandai sebagai sudah selesai"><i
                 class="fas fa-check"></i></a>
             <% } %>
-            <a href="/post/<%= post.id %>/my" class="btn btn-primary" title="lihat postingan"><i
+            <a href="/post/<%= post.id %>/detail" class="btn btn-primary" title="lihat postingan"><i
                 class="fas fa-eye"></i></a>
-            <a href="/post/" class="btn btn-warning" title="ubah postingan"><i class="fas fa-pen"></i></a>
+            <a href="/post/<%= post.id %>/edit" class="btn btn-warning" title="ubah postingan"><i
+                class="fas fa-pen"></i></a>
             <a href="/post/<%= post.id %>/delete" class="btn btn-danger" title="hapus postingan"><i
                 class="fas fa-trash-can"></i></a>
           </div>

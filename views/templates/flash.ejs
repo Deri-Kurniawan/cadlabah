@@ -1,4 +1,4 @@
-<% if (notif && notif.length > 0) { %>
+<% if (notif && notif.length > 0 && notif.length < 30) { %>
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
   <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header bg-primary text-light">

@@ -1,0 +1,111 @@
+<%- include('templates/header') %>
+<script src="https://cdn.tiny.cloud/1/mqiw12ifoks1anqawa00p0o8ef5mfk3sz3uhpb003z954pig/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<%- include('templates/navbar') %>
+<main tabindex="0" id="mainContent" aria-label="konten utama">
+  <div class="container my-4">
+    <h2 tabindex="0" data-aos="fade-in">Ubah Postingan</h2>
+    <form action="/post/update" method="post" enctype="multipart/form-data">
+      <input type="text" name="postId" value="<%= post.id %>" hidden>
+      <input type="text" name="author" value="<%= user.displayName %>" hidden>
+      <div class="form-floating mb-3" data-aos="fade-in">
+        <input type="text" name="title" id="title" class="form-control" value="<%= post.title %>" placeholder="judul"
+          required>
+        <label for="title">Judul</label>
+      </div>
+
+      <div class="input-group mb-3" data-aos="fade-in">
+        <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
+        <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
+      </div>
+
+      <div class="mb-3" data-aos="fade-in">
+        <label for="description">Keterangan</label>
+        <textarea name="description" id="description" class="form-control" value="" placeholder="Keterangan"
+          style="height: 10em">
+          <%= post.description %>
+        </textarea>
+      </div>
+
+      <% const { whatsapp, phone, email } = post.contacts %>
+
+      <div class="row" data-aos="fade-in">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+          <label for="whatsapp">Kontak Whatsapp (opsional)</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="whatsapp-addon">+62</span>
+            <input type="tel" name="whatsapp" id="whatsapp" class="form-control" value="<%= whatsapp.slice(3) %>"
+              aria-describedby="whatsapp-addon" placeholder="contoh: 85720959031">
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-in">
+          <label for="phone">Telepon Seluler</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="phone-addon">+62</span>
+            <input type="tel" name="phone" id="phone" class="form-control" value="<%= phone.slice(3) %>"
+              aria-describedby="phone-addon" placeholder="contoh: 85720959031" required>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4" data-aos="fade-in">
+          <label for="email">Email (opsional)</label>
+          <div class="input-group mb-3">
+            <input type="email" name="email" id="email" class="form-control" value="<%= email %>"
+              placeholder="foo@contoh.com">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-floating mb-3" data-aos="fade-in">
+            <select name="category" id="caategory" class="form-control" value="<%= post.category %>"
+              placeholder="Kategori" required>
+              <option value="">Pilih Kategori Barang</option>
+              <option <%= (post.category === 'electronic') ? 'selected' : '' %> value="electronic">Elektronik</option>
+              <option <%= (post.category === 'accessories') ? 'selected' : '' %> value="accessories">Aksesoris</option>
+              <option <%= (post.category === 'automotive') ? 'selected' : '' %> value="automotive">Otomotif</option>
+              <option <%= (post.category === 'clothes') ? 'selected' : '' %> value="clothes">Pakaian</option>
+            </select>
+            <label for="category">Kategori</label>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-floating mb-3" data-aos="fade-in">
+            <select name="goodsStatus" id="goodsStatus" class="form-control" value="" placeholder="Kategori" required>
+              <option value="">Pilih Status Barang</option>
+              <option <%= (post.goodsStatus === '0') ? 'selected' : '' %> value="0">Hilang</option>
+              <option <%= (post.goodsStatus === '1') ? 'selected' : '' %> value="1">Temuan</option>
+            </select>
+            <label for="goodsStatus">Status Barang</label>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-outline-success col-12 col-lg-6 offset-lg-3" data-aos="fade-in">Simpan
+        Perubahan</button>
+
+    </form>
+  </div>
+</main>
+
+<%- include('templates/copyright') %>
+<%- include('templates/flash') %>
+
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    toolbar_mode: 'floating',
+  });
+
+  AOS.init({
+    once: true,
+    offset: -10,
+  });
+</script>
+
+<%- include('templates/footer') %>
