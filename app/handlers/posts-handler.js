@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const {
   getPosts,
@@ -128,13 +129,7 @@ const postUpdateProcessHandler = (req, res) => {
     goodsStatus,
   } = req.body;
 
-  const { name, mv } = req.files.image;
-  const imageName = Date.now() + name;
-
-  mv(path.join(__dirname, `../../public/images/posts/${imageName}`));
-
   const setPost = {
-    image: imageName,
     title,
     author,
     category,
@@ -153,6 +148,25 @@ const postUpdateProcessHandler = (req, res) => {
       res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal diubah!');
+      res.redirect('/posts/my');
+    }
+  });
+};
+
+const postUpdateImageHandler = (req, res) => {
+  fs.unlinkSync(path.join(__dirname, `../../public/images/posts/${req.body.currentImage}`));
+
+  const { name, mv } = req.files.image;
+  const imageName = Date.now() + name;
+
+  mv(path.join(__dirname, `../../public/images/posts/${imageName}`));
+
+  putPost((req.body.postId), { image: imageName }, (respond) => {
+    if (respond.status === 200) {
+      req.flash('notif', 'Gambar postingan berhasil diubah!');
+      res.redirect('/posts/my');
+    } else {
+      req.flash('notif', 'Gambar Postingan gagal diubah!');
       res.redirect('/posts/my');
     }
   });
@@ -224,4 +238,5 @@ module.exports = {
   postDeleteHandler,
   myPostsHandler,
   postUpdateProcessHandler,
+  postUpdateImageHandler,
 };

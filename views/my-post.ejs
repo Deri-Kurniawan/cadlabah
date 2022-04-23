@@ -17,8 +17,12 @@
               </span><%= post.title %>
             </h5>
           </div>
-          <img src="/images/posts/<%= post.image %>" class="posts-img img-thumbnail lazyload card-img-top"
-            data-src="/images/posts/<%= post.image %>" alt="gambar" data-aos="zoom-in" style="height:150px">
+          <!-- Modal Trigger -->
+          <div data-bs-toggle="modal" data-bs-target="#changeImageModal-<%= post.id %>" title="klik untuk ubah gambar"
+            style="cursor: pointer;">
+            <img src="/images/posts/<%= post.image %>" class="col-12 img-thumbnail lazyload card-img-top"
+              data-src="/images/posts/<%= post.image %>" alt="gambar" data-aos="zoom-in" style="height:200px">
+          </div>
           <div class="card-body">
             <p><i class="fas fa-info-circle text-primary"></i> Laporan Barang
               <%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>
@@ -42,12 +46,39 @@
           </div>
         </div>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="changeImageModal-<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form action="/post/update/image" method="post" enctype="multipart/form-data">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ubah Gambar Untuk: <%= post.title %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" name="postId" value="<%= post.id %>">
+                <input type="hidden" name="currentImage" value="<%= post.image %>">
+                <div class="input-group mb-3" data-aos="fade-in">
+                  <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
+                  <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
       <% }) %>
     </div>
     <!-- end of post card -->
 
   </div>
 </main>
+
 
 <script>
   AOS.init({

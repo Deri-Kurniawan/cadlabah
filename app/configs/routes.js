@@ -13,6 +13,7 @@ const {
   postDetailHandler,
   postDeleteHandler,
   myPostsHandler,
+  postUpdateImageHandler,
   postUpdateProcessHandler,
 } = require('../handlers/posts-handler');
 const { educationHandler } = require('../handlers/education-handler');
@@ -33,6 +34,7 @@ const Routes = {
     route.get('/post/:postId/complete', authCheckerMiddleware, postCompleteHandler);
     route.get('/post/:postId/edit', authCheckerMiddleware, postEditHandler);
     route.post('/post/update', authCheckerMiddleware, postUpdateProcessHandler);
+    route.post('/post/update/image', authCheckerMiddleware, postUpdateImageHandler);
     route.get('/post/:postId/detail', postDetailHandler);
     route.get('/post/:postId/delete', authCheckerMiddleware, postDeleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
