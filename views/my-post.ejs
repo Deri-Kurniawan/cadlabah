@@ -17,7 +17,7 @@
               </span><%= post.title %>
             </h5>
           </div>
-          <!-- Modal Trigger -->
+          <!-- Modal Change Image Trigger -->
           <div data-bs-toggle="modal" data-bs-target="#changeImageModal-<%= post.id %>" title="klik untuk ubah gambar"
             style="cursor: pointer;">
             <img src="/images/posts/<%= post.image %>" class="col-12 img-thumbnail lazyload card-img-top"
@@ -28,13 +28,13 @@
               <%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>
             </p>
             <% if(post.isDone) { %>
-            <a href="/post/<%= post.id %>/uncomplete" class="btn btn-danger" title="tandai sebagai belum selesai"><i
-                class="fas fa-xmark"></i></a>
+            <a href="/post/<%= post.id %>/uncomplete?next=/posts/my" class="btn btn-danger"
+              title="tandai sebagai belum selesai"><i class="fas fa-xmark"></i></a>
             <% } else { %>
-            <a href="/post/<%= post.id %>/complete" class="btn btn-success" title="tandai sebagai sudah selesai"><i
-                class="fas fa-check"></i></a>
+            <a href="/post/<%= post.id %>/complete?next=/posts/my" class="btn btn-success"
+              title="tandai sebagai sudah selesai"><i class="fas fa-check"></i></a>
             <% } %>
-            <a href="/post/<%= post.id %>/detail" class="btn btn-primary" title="lihat postingan"><i
+            <a href="/post/<%= post.id %>/detail" class="btn btn-primary" title="lihat detail postingan"><i
                 class="fas fa-eye"></i></a>
             <a href="/post/<%= post.id %>/edit" class="btn btn-warning" title="ubah postingan"><i
                 class="fas fa-pen"></i></a>
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <!-- Modal -->
+      <!-- Modal Change Image -->
       <div class="modal fade" id="changeImageModal-<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">

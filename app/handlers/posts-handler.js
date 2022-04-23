@@ -97,7 +97,19 @@ const postCreateProcessHandler = (req, res) => {
 };
 
 const postDetailHandler = (req, res) => {
-  res.end('test');
+  getPost(req.params.postId, (post) => {
+    if (post.length === 0) {
+      req.flash('notif', 'Postingan tidak ditemukan!');
+      res.redirect('/posts');
+    }
+
+    res.render('post-detail', {
+      title: 'Detail Postingan',
+      user: req.user,
+      post,
+      notif: req.flash('notif'),
+    });
+  });
 };
 
 const postEditHandler = (req, res) => {
@@ -186,25 +198,29 @@ const postDeleteHandler = (req, res) => {
 
 const postCompleteHandler = (req, res) => {
   putPost((req.params.postId), { isDone: true }, (respond) => {
+    const { next = '/post/my' } = req.query;
+
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dintandai sebagai selesai!');
-      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal ditandai selesai!');
-      res.redirect('/posts/my');
     }
+
+    res.redirect(next);
   });
 };
 
 const postUncompleteHandler = (req, res) => {
   putPost((req.params.postId), { isDone: false }, (respond) => {
+    const { next = '/post/my' } = req.query;
+
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dintandai sebagai belum selesai!');
-      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal ditandai belum selesai!');
-      res.redirect('/posts/my');
     }
+
+    res.redirect(next);
   });
 };
 

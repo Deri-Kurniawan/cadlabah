@@ -1,0 +1,92 @@
+<%- include('templates/header') %>
+<script src="https://cdn.tiny.cloud/1/mqiw12ifoks1anqawa00p0o8ef5mfk3sz3uhpb003z954pig/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<%- include('templates/navbar') %>
+<main tabindex="0" id="mainContent" aria-label="konten utama">
+  <div class="container my-4">
+    <h2 tabindex="0" data-aos="fade-in">Detail Postingan</h2>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <th>Gambar</th>
+        <td>
+          <a href="/images/posts/<%- post.image %>" title="<%- post.image %>" target="_blank"
+            referrerpolicy="no-referrer">
+            <img class="col-12 img-thumbnail" src="/images/posts/<%- post.image %>" alt="<%- post.image %>">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th>Judul</th>
+        <td><%= post.title %></td>
+      </tr>
+      <tr>
+        <th>Penulis</th>
+        <td><%= post.author %></td>
+      </tr>
+      <tr>
+        <th>Jenis Postingan</th>
+        <td><%= (post.goodsStatus === 1) ? 'Barang Hilang':'Barang Temuan' %></td>
+      </tr>
+      <tr>
+        <th>Kategori</th>
+        <td><%= post.category %></td>
+      </tr>
+      <tr>
+        <th>Isi</th>
+        <td><%=post.description %></td>
+      </tr>
+      <tr>
+        <th>Ditandai Selesai</th>
+        <td><%= (post.isDone) ? 'Ya' : 'Tidak' %></td>
+      </tr>
+      <tr>
+        <th>Kontak</th>
+        <td>
+          <ul>
+            <li>Whatsapp: <%= post.contacts.whatsapp || '-' %></li>
+            <li>No. Telp: <%= post.contacts.phone || '-' %></li>
+            <li>Email: <%= post.contacts.email || '-' %></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Dibuat pada</th>
+        <td><%= new Date(post.createdAt).toLocaleString() %></td>
+      </tr>
+      <tr>
+        <th>Aksi</th>
+        <td>
+          <% if(post.isDone) { %>
+          <a href="/post/<%= post.id %>/uncomplete?next=/post/<%= post.id %>/detail" class="btn btn-danger"
+            title="tandai sebagai belum selesai"><i class="fas fa-xmark"></i></a>
+          <% } else { %>
+          <a href="/post/<%= post.id %>/complete?next=/post/<%= post.id %>/detail" class="btn btn-success"
+            title="tandai sebagai sudah selesai"><i class="fas fa-check"></i></a>
+          <% } %>
+          <a href="/post/<%= post.id %>/edit" class="btn btn-warning" title="ubah postingan"><i
+              class="fas fa-pen"></i></a>
+          <a href="/post/<%= post.id %>/delete" class="btn btn-danger" title="hapus postingan"><i
+              class="fas fa-trash-can"></i></a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</main>
+
+<%- include('templates/flash') %>
+<%- include('templates/copyright') %>
+
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    toolbar_mode: 'floating',
+  });
+
+  AOS.init({
+    once: true,
+    offset: -10,
+  });
+</script>
+
+<%- include('templates/footer') %>
