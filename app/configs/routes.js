@@ -53,6 +53,7 @@ const Routes = {
     route.get('/post', (req, res) => res.redirect('/posts'));
     route.get('/posts/', (req, res) => res.redirect('/posts'));
     route.get('/posts/create', (req, res) => res.redirect('/post/create'));
+    route.get('/post/:id', (req, res) => res.redirect(`/post/${req.params.id}/detail`));
     route.get('/posts/category', (req, res) => res.redirect('/posts'));
     route.get('/posts/category/', (req, res) => res.redirect('/posts'));
     route.get('/edu', (req, res) => res.redirect('/edu/tips-dan-trik'));

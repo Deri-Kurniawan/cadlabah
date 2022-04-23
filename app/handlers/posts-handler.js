@@ -113,10 +113,12 @@ const postDetailHandler = (req, res) => {
 };
 
 const postEditHandler = (req, res) => {
+  const { next = '/posts/my' } = req.query;
+
   getPost(req.params.postId, (post) => {
     if (post.length === 0) {
       req.flash('notif', 'Postingan tidak ditemukan!');
-      res.redirect('/posts');
+      res.redirect(next);
     }
 
     res.render('post-edit', {
@@ -124,6 +126,7 @@ const postEditHandler = (req, res) => {
       user: req.user,
       post,
       notif: req.flash('notif'),
+      next,
     });
   });
 };
@@ -155,13 +158,15 @@ const postUpdateProcessHandler = (req, res) => {
   };
 
   putPost(postId, setPost, (respond) => {
+    const { next = '/posts/my' } = req.query;
+
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil diubah!');
-      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal diubah!');
-      res.redirect('/posts/my');
     }
+
+    res.redirect(next);
   });
 };
 
@@ -176,11 +181,10 @@ const postUpdateImageHandler = (req, res) => {
   putPost((req.body.postId), { image: imageName }, (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Gambar postingan berhasil diubah!');
-      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Gambar Postingan gagal diubah!');
-      res.redirect('/posts/my');
     }
+    res.redirect('/posts/my');
   });
 };
 
@@ -188,11 +192,10 @@ const postDeleteHandler = (req, res) => {
   deletePost((req.params.postId), (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dihapus!');
-      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal dihapus!');
-      res.redirect('/posts/my');
     }
+    res.redirect('/posts/my');
   });
 };
 

@@ -5,7 +5,7 @@
 <main tabindex="0" id="mainContent" aria-label="konten utama">
   <div class="container my-4">
     <h2 tabindex="0" data-aos="fade-in">Ubah Postingan</h2>
-    <form action="/post/update" method="post">
+    <form action="/post/update?next=<%= next %>" method="post">
       <input type="text" name="postId" value="<%= post.id %>" hidden>
       <input type="text" name="author" value="<%= user.displayName %>" hidden>
       <div class="form-floating mb-3" data-aos="fade-in">
