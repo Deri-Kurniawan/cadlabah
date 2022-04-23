@@ -36,8 +36,8 @@ const postPosts = (data, callback) => {
   });
 };
 
-const putPost = (id, callback) => {
-  axios.put(API_ENDPOINT.putPost(id), { isDone: true }, {
+const putPost = (id, data, callback) => {
+  axios.put(API_ENDPOINT.putPost(id), data, {
     headers: {
       'Accept': 'application/json',
     },

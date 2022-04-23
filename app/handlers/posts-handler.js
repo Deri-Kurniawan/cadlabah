@@ -1,5 +1,10 @@
 const path = require('path');
-const { getPosts, postPosts, putPost } = require('../models/posts-model');
+const {
+  getPosts,
+  postPosts,
+  putPost,
+  deletePost,
+} = require('../models/posts-model');
 
 const postsHandler = (req, res) => {
   getPosts((posts) => {
@@ -89,15 +94,57 @@ const postCreateProcessHandler = (req, res) => {
   });
 };
 
-const postCompleteHandler = (req, res) => {
-  putPost((req.params.postId), (respond) => {
+const postDeleteHandler = (req, res) => {
+  deletePost((req.params.postId), (respond) => {
     if (respond.status === 200) {
-      req.flash('notif', 'Postingan berhasil dintandai selesai!');
-      res.redirect('/posts');
+      req.flash('notif', 'Postingan berhasil dihapus!');
+      res.redirect('/posts/my');
+    } else {
+      req.flash('notif', 'Postingan gagal dihapus!');
+      res.redirect('/posts/my');
+    }
+  });
+};
+
+const postCompleteHandler = (req, res) => {
+  putPost((req.params.postId), { isDone: true }, (respond) => {
+    if (respond.status === 200) {
+      req.flash('notif', 'Postingan berhasil dintandai sebagai selesai!');
+      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal ditandai selesai!');
+      res.redirect('/posts/my');
+    }
+  });
+};
+
+const postUncompleteHandler = (req, res) => {
+  putPost((req.params.postId), { isDone: false }, (respond) => {
+    if (respond.status === 200) {
+      req.flash('notif', 'Postingan berhasil dintandai sebagai belum selesai!');
+      res.redirect('/posts/my');
+    } else {
+      req.flash('notif', 'Postingan gagal ditandai belum selesai!');
+      res.redirect('/posts/my');
+    }
+  });
+};
+
+const myPostsHandler = (req, res) => {
+  getPosts((posts) => {
+    const myPosts = posts.filter((post) => Number(post.accountId) === Number(req.user.id));
+
+    if (myPosts.length === 0) {
+      req.flash('notif', 'Anda belum memiliki postingan!');
       res.redirect('/posts');
     }
+
+    res.render('my-post', {
+      title: 'Postingan Saya',
+      user: req.user,
+      posts: myPosts,
+      notif: req.flash('notif'),
+    });
   });
 };
 
@@ -107,4 +154,7 @@ module.exports = {
   postCreateHandler,
   postCreateProcessHandler,
   postCompleteHandler,
+  postUncompleteHandler,
+  postDeleteHandler,
+  myPostsHandler,
 };

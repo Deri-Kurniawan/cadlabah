@@ -8,6 +8,9 @@ const {
   postCreateHandler,
   postCreateProcessHandler,
   postCompleteHandler,
+  postUncompleteHandler,
+  postDeleteHandler,
+  myPostsHandler,
 } = require('../handlers/posts-handler');
 const { educationHandler } = require('../handlers/education-handler');
 const { aboutUsHandler } = require('../handlers/about-us-handler');
@@ -20,9 +23,12 @@ const Routes = {
     route.get('/home', homeHandler);
     route.get('/posts', postsHandler);
     route.get('/posts/category/:categoryName', postsByCategoryHandler);
+    route.get('/posts/my', authCheckerMiddleware, myPostsHandler);
     route.get('/post/create', authCheckerMiddleware, postCreateHandler);
     route.post('/post/create', authCheckerMiddleware, postCreateProcessHandler);
-    route.get('/post/:postId/complete', postCompleteHandler);
+    route.get('/post/:postId/uncomplete', authCheckerMiddleware, postUncompleteHandler);
+    route.get('/post/:postId/complete', authCheckerMiddleware, postCompleteHandler);
+    route.get('/post/:postId/delete', authCheckerMiddleware, postDeleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
     route.get('/about-us', aboutUsHandler);
     route.get('/auth/google', authPlatformMiddleware, google.request);

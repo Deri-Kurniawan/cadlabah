@@ -1,0 +1,60 @@
+<%- include('templates/header') %>
+<%- include('templates/navbar') %>
+<main tabindex="0" id="mainContent" aria-label="konten utama">
+  <div class="container my-4">
+    <h2 tabindex="0"><%= title %></h2>
+
+    <!-- post card -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% posts.forEach((post) => { %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <% const postGoodsStatus = (Number(post.goodsStatus) === 1); %>
+            <h5 class="card-title"><span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
+                aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
+                <%- postGoodsStatus ? '<i class="fas fa-box"></i>' : '<i class="fas fa-exclamation-triangle"></i>' %>
+              </span><%= post.title %>
+            </h5>
+          </div>
+          <img src="/images/posts/<%= post.image %>" class="posts-img img-thumbnail lazyload card-img-top"
+            data-src="/images/posts/<%= post.image %>" alt="gambar" data-aos="zoom-in" style="height:150px">
+          <div class="card-body">
+            <p><i class="fas fa-info-circle text-primary"></i> Laporan Barang
+              <%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>
+            </p>
+            <% if(post.isDone) { %>
+            <a href="/post/<%= post.id %>/uncomplete" class="btn btn-danger" title="tandai sebagai belum selesai"><i
+                class="fas fa-xmark"></i></a>
+            <% } else { %>
+            <a href="/post/<%= post.id %>/complete" class="btn btn-success" title="tandai sebagai sudah selesai"><i
+                class="fas fa-check"></i></a>
+            <% } %>
+            <a href="/post/<%= post.id %>/my" class="btn btn-primary" title="lihat postingan"><i
+                class="fas fa-eye"></i></a>
+            <a href="/post/" class="btn btn-warning" title="ubah postingan"><i class="fas fa-pen"></i></a>
+            <a href="/post/<%= post.id %>/delete" class="btn btn-danger" title="hapus postingan"><i
+                class="fas fa-trash-can"></i></a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Dibuat pada <%= new Date(post.createdAt).toLocaleString() %></small>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <!-- end of post card -->
+
+  </div>
+</main>
+
+<script>
+  AOS.init({
+    once: true,
+  });
+</script>
+
+<%- include('templates/flash') %>
+
+<%- include('templates/copyright') %>
+<%- include('templates/footer') %>
