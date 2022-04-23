@@ -1,0 +1,61 @@
+<%- include('templates/header') %>
+<%- include('templates/navbar') %>
+<main tabindex="0" id="mainContent" aria-label="konten utama">
+  <div class="container my-4">
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <h2 tabindex="0">Tentang Kami</h2>
+        <p>Kami adalah sebagai wadah pelaporan dan pencarian barang hilang</p>
+
+        <h2 tabindex="0">Kontak Kami</h2>
+        <table class="table table-borderless">
+          <tr>
+            <th>No. Telp</th>
+            <td>:</td>
+            <td><a class="text-decoration-none link-secondary" href="tel:+6285793677846">+62-857-9367-7846</a></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>:</td>
+            <td><a class="text-decoration-none link-secondary" href="mailto:cadlabah@gmail.com">cadlabah@gmail.com</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Alamat</th>
+            <td>:</td>
+            <td>
+              <a class="text-decoration-none link-secondary" href="https://goo.gl/maps/cuNrrGjcJzjmu5NG6"
+                target="_blank" referrerpolicy="no-referrer">Kp. Cimapag RT.09 RW.08, Desa Cireunghas, Kec.Cireunghas,
+                Kab.Sukabumi,
+                Jawa Barat 43193, Indonesia</a>
+            </td>
+          </tr>
+        </table>
+        <h2 tabindex="0">Repositori Kami</h2>
+        <div class="mt-2">
+          <i class="fab fa-github fa-fw fs-5"></i> <a class="text-decoration-none text-black"
+            href="https://github.com/deri-kurniawan/cadlabah" target="blank" referrerpolicy="no-refererr">GITHUB</a>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="card">
+          <iframe class="col-12"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6315.411027181106!2d107.02084209680369!3d-6.9518428122663956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6845f50549bf79%3A0x1188c9a68557266!2zNsKwNTcnMDcuMSJTIDEwN8KwMDEnNDEuMSJF!5e0!3m2!1sid!2sid!4v1650700586881!5m2!1sid!2sid"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">Google Maps Load Failed</iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  AOS.init({
+    once: true,
+  });
+</script>
+
+<%- include('templates/copyright') %>
+<%- include('templates/footer') %>

@@ -10,6 +10,7 @@ const {
   postCompleteHandler,
 } = require('../handlers/posts-handler');
 const { educationHandler } = require('../handlers/education-handler');
+const { aboutUsHandler } = require('../handlers/about-us-handler');
 const { logoutHandler, authPlatformSuccessHandler } = require('../handlers/auth-handler');
 const { pageNotFoundHandler } = require('../handlers/error-page-handler');
 
@@ -23,6 +24,7 @@ const Routes = {
     route.post('/post/create', authCheckerMiddleware, postCreateProcessHandler);
     route.get('/post/:postId/complete', postCompleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
+    route.get('/about-us', aboutUsHandler);
     route.get('/auth/google', authPlatformMiddleware, google.request);
     route.get('/auth/github', authPlatformMiddleware, github.request);
     route.get('/logout', logoutHandler);
