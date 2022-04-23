@@ -148,7 +148,7 @@ const postUpdateProcessHandler = (req, res) => {
   };
 
   putPost(postId, setPost, (respond) => {
-    if (respond.status === 201) {
+    if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil diubah!');
       res.redirect('/posts/my');
     } else {
