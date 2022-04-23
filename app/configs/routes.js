@@ -35,14 +35,14 @@ const Routes = {
     route.get('/post/:postId/edit', authCheckerMiddleware, postEditHandler);
     route.post('/post/update', authCheckerMiddleware, postUpdateProcessHandler);
     route.post('/post/update/image', authCheckerMiddleware, postUpdateImageHandler);
-    route.get('/post/:postId/detail', postDetailHandler);
+    route.get('/post/:postId/detail', authCheckerMiddleware, postDetailHandler);
     route.get('/post/:postId/delete', authCheckerMiddleware, postDeleteHandler);
     route.get('/edu/tips-dan-trik', educationHandler);
     route.get('/about-us', aboutUsHandler);
     route.get('/auth/google', authPlatformMiddleware, google.request);
     route.get('/auth/github', authPlatformMiddleware, github.request);
-    route.get('/logout', logoutHandler);
-    route.get('/:any/logout', logoutHandler);
+    route.get('/logout', authCheckerMiddleware, logoutHandler);
+    route.get('/:any/logout', authCheckerMiddleware, logoutHandler);
     route.get('/auth/success', authPlatformSuccessHandler);
     route.get('/google/callback', google.verify);
     route.get('/github/callback', github.verify);

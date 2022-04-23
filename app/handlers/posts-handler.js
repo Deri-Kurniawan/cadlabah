@@ -189,6 +189,23 @@ const postUpdateImageHandler = (req, res) => {
 };
 
 const postDeleteHandler = (req, res) => {
+  getPost(req.params.postId, (post) => {
+    if (post.length === 0) {
+      req.flash('notif', 'Postingan tidak ditemukan!');
+      res.redirect('/posts/my');
+    }
+
+    fs.unlinkSync(path.join(__dirname, `../../public/images/posts/${post.image}`));
+
+    deletePost(req.params.postId, (respond) => {
+      if (respond.status === 200) {
+        req.flash('notif', 'Postingan berhasil dihapus!');
+      } else {
+        req.flash('notif', 'Postingan gagal dihapus!');
+      }
+      res.redirect('/posts/my');
+    });
+  })
   deletePost((req.params.postId), (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dihapus!');
