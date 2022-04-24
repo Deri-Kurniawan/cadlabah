@@ -18,10 +18,10 @@ const postsHandler = (req, res) => {
       postFiltered = undonePosts.filter((post) => {
         const { title, description } = post;
         let isMatch = false;
-        if (title.toLowerCase().includes(keywords)) {
+        if (title.toLowerCase().includes(keywords.toLowerCase())) {
           isMatch = true;
         }
-        if (description.toLowerCase().includes(keywords)) {
+        if (description.toLowerCase().includes(keywords.toLowerCase())) {
           isMatch = true;
         }
         return isMatch;
@@ -33,7 +33,10 @@ const postsHandler = (req, res) => {
       user: req.user,
       posts: postFiltered,
       subTitle: 'Semua Postingan',
-      isPostEmptyMessage: 'Postingan Kosong!',
+      isPostEmptyMessage: 'Postingan Kosong atau Tidak Ditemukan!',
+      tryFind: {
+        keywords,
+      },
       notif: req.flash('notif'),
     });
   });
@@ -41,6 +44,7 @@ const postsHandler = (req, res) => {
 
 const postsByCategoryHandler = (req, res) => {
   getPosts((posts) => {
+    const { keywords } = req.query;
     const postUndoneFilteredByCategory = posts.filter((post) => (
       !post.isDone && post.category === req.params.categoryName
     ));
@@ -52,6 +56,9 @@ const postsByCategoryHandler = (req, res) => {
       user: req.user,
       posts: postUndoneFilteredByCategory,
       subTitle: `Postingan berdasarkan kategori <b>${categoryName}</b>`,
+      tryFind: {
+        keywords,
+      },
       isPostEmptyMessage: `Postingan berdasarkan kategori <b>${categoryName}</b> Kosong!`,
       notif: req.flash('notif'),
     });

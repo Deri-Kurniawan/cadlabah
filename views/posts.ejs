@@ -8,21 +8,19 @@
   <div class="container my-4">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8 col-lg-9 mb-3">
-        <% if (posts.length > 0) { %>
         <h2 class="my-3 text-center" tabindex="0"><%- subTitle %></h2>
         <!-- form post searcher -->
-        <form action="/posts" method="get">
-          <input type="search" name="keywords" id="keywords">
-          <select name="category" id="category">
-            <option value="all">Semua</option>
-            <option value="accessories">Aksesoris</option>
-            <option value="electronics">Elektronik</option>
-            <option value="automotive">Otomotif</option>
-            <option value="clotes">Pakaian</option>
-          </select>
-          <button><i class="fas fa-search"></i></button>
-        </form>
+        <div class="mb-3">
+          <form action="/posts" method="get">
+            <div class="input-group">
+              <input class="form-control" type="search" name="keywords" id="keywords"
+                value="<%= tryFind.keywords || '' %>" placeholder="Cari judul dan deskripsi">
+              <button class="btn btn-outline-primary"><i class="fas fa-search"></i> Cari</button>
+            </div>
+          </form>
+        </div>
         <!-- end of form post searcher -->
+        <% if (posts.length > 0) { %>
 
         <% posts.forEach((post, i) => { %>
         <!-- post item -->
@@ -127,7 +125,7 @@
         </div>
         <% }); // end of foreach %>
         <% } else { %>
-        <h2 class="text-capitalize"><%- isPostEmptyMessage %></h2>
+        <h3 class="text-center text-capitalize"><%- isPostEmptyMessage %></h3>
         <% } // end of else %>
         <!-- end of post item -->
       </div>
