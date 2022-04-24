@@ -11,11 +11,27 @@ const {
 const postsHandler = (req, res) => {
   getPosts((posts) => {
     const undonePosts = posts.filter((post) => !post.isDone);
+    const { keywords } = req.query;
+    let postFiltered = undonePosts;
+
+    if (keywords && keywords !== '') {
+      postFiltered = undonePosts.filter((post) => {
+        const { title, description } = post;
+        let isMatch = false;
+        if (title.toLowerCase().includes(keywords)) {
+          isMatch = true;
+        }
+        if (description.toLowerCase().includes(keywords)) {
+          isMatch = true;
+        }
+        return isMatch;
+      });
+    }
 
     res.render('posts', {
       title: 'Postingan',
       user: req.user,
-      posts: undonePosts,
+      posts: postFiltered,
       subTitle: 'Semua Postingan',
       isPostEmptyMessage: 'Postingan Kosong!',
       notif: req.flash('notif'),
@@ -205,7 +221,7 @@ const postDeleteHandler = (req, res) => {
       }
       res.redirect('/posts/my');
     });
-  })
+  });
   deletePost((req.params.postId), (respond) => {
     if (respond.status === 200) {
       req.flash('notif', 'Postingan berhasil dihapus!');
