@@ -194,7 +194,14 @@ const postUpdateProcessHandler = (req, res) => {
 };
 
 const postUpdateImageHandler = (req, res) => {
-  fs.unlinkSync(path.join(__dirname, `../../public/images/posts/${req.body.currentImage}`));
+  try {
+    const ImagePath = `../../public/images/posts/${req.body.currentImage}`;
+    if (fs.existsSync(ImagePath)) {
+      fs.unlinkSync(path.join(__dirname, ImagePath));
+    }
+  } catch (err) {
+    console.error(err);
+  }
 
   const { name, mv } = req.files.image;
   const imageName = Date.now() + name;
