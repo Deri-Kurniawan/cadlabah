@@ -111,7 +111,7 @@ const postCreateProcessHandler = (req, res) => {
   postPosts(setPosts, (respond) => {
     if (respond.status === 201) {
       req.flash('notif', 'Postingan berhasil dibuat!');
-      res.redirect('/posts');
+      res.redirect('/posts/my');
     } else {
       req.flash('notif', 'Postingan gagal dibuat!');
       res.redirect('/post/create');
@@ -277,11 +277,6 @@ const postUncompleteHandler = (req, res) => {
 const myPostsHandler = (req, res) => {
   getPosts((posts) => {
     const myPosts = posts.filter((post) => Number(post.accountId) === Number(req.user.id));
-
-    if (myPosts.length === 0) {
-      req.flash('notif', 'Anda belum memiliki postingan!');
-      res.redirect('/posts');
-    }
 
     res.render('my-post', {
       title: 'Postingan Saya',

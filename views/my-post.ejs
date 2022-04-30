@@ -3,80 +3,85 @@
 <main tabindex="0" id="mainContent" aria-label="konten utama">
   <div class="container my-4">
     <h2 tabindex="0"><%= title %></h2>
+    <a href="/post/create" class="btn btn-success my-4"><i class="fas fa-plus"></i> Buat Postingan</a>
 
-    <!-- post card -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      <% posts.forEach((post) => { %>
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-header">
-            <% const postGoodsStatus = (Number(post.goodsStatus) === 1); %>
-            <h5 class="card-title"><span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
-                aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
-                <%- postGoodsStatus ? '<i class="fas fa-box"></i>' : '<i class="fas fa-exclamation-triangle"></i>' %>
-              </span><%= post.title %>
-            </h5>
-          </div>
-          <!-- Modal Change Image Trigger -->
-          <div data-bs-toggle="modal" data-bs-target="#changeImageModal-<%= post.id %>" title="klik untuk ubah gambar"
-            style="cursor: pointer;">
-            <img src="/images/posts/<%= post.image %>" class="col-12 img-thumbnail lazyload card-img-top"
-              data-src="/images/posts/<%= post.image %>" alt="gambar" data-aos="zoom-in" style="height:200px">
-          </div>
-          <div class="card-body">
-            <p><i class="fas fa-info-circle text-primary"></i> Laporan Barang
-              <%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>
-            </p>
-            <% if(post.isDone) { %>
-            <a href="/post/<%= post.id %>/uncomplete?next=/posts/my" class="btn btn-danger"
-              title="tandai sebagai belum selesai"><i class="fas fa-xmark"></i></a>
-            <% } else { %>
-            <a href="/post/<%= post.id %>/complete?next=/posts/my" class="btn btn-success"
-              title="tandai sebagai sudah selesai"><i class="fas fa-check"></i></a>
-            <% } %>
-            <a href="/post/<%= post.id %>/detail" class="btn btn-primary" title="lihat detail postingan"><i
-                class="fas fa-eye"></i></a>
-            <a href="/post/<%= post.id %>/edit?next=/posts/my" class="btn btn-warning" title="ubah postingan"><i
-                class="fas fa-pen"></i></a>
-            <a href="/post/<%= post.id %>/delete" class="btn btn-danger" title="hapus postingan"><i
-                class="fas fa-trash-can"></i></a>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Dibuat pada <%= new Date(post.createdAt).toLocaleString() %></small>
+    <% if (posts.length === 0) { %>
+    <div class="alert alert-danger" role="alert">
+      Belum ada postingan.
+      <% } else { %>
+      <!-- post card -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <% posts.forEach((post) => { %>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header">
+              <% const postGoodsStatus = (Number(post.goodsStatus) === 1); %>
+              <h5 class="card-title"><span class="<%= postGoodsStatus ? 'text-success' : 'text-danger' %>"
+                  aria-label="<%= postGoodsStatus ? 'Barang temuan' : 'Laporan barang yang hilang' %>" tabindex="0">
+                  <%- postGoodsStatus ? '<i class="fas fa-box"></i>' : '<i class="fas fa-exclamation-triangle"></i>' %>
+                </span><%= post.title %>
+              </h5>
+            </div>
+            <!-- Modal Change Image Trigger -->
+            <div data-bs-toggle="modal" data-bs-target="#changeImageModal-<%= post.id %>" title="klik untuk ubah gambar"
+              style="cursor: pointer;">
+              <img src="/images/posts/<%= post.image %>" class="col-12 img-thumbnail lazyload card-img-top"
+                data-src="/images/posts/<%= post.image %>" alt="gambar" data-aos="zoom-in" style="height:200px">
+            </div>
+            <div class="card-body">
+              <p><i class="fas fa-info-circle text-primary"></i> Laporan Barang
+                <%= (Number(post.goodsStatus) === 1) ? 'Temuan' : 'Hilang' %>
+              </p>
+              <% if(post.isDone) { %>
+              <a href="/post/<%= post.id %>/uncomplete?next=/posts/my" class="btn btn-danger"
+                title="tandai sebagai belum selesai"><i class="fas fa-xmark"></i></a>
+              <% } else { %>
+              <a href="/post/<%= post.id %>/complete?next=/posts/my" class="btn btn-success"
+                title="tandai sebagai sudah selesai"><i class="fas fa-check"></i></a>
+              <% } %>
+              <a href="/post/<%= post.id %>/detail" class="btn btn-primary" title="lihat detail postingan"><i
+                  class="fas fa-eye"></i></a>
+              <a href="/post/<%= post.id %>/edit?next=/posts/my" class="btn btn-warning" title="ubah postingan"><i
+                  class="fas fa-pen"></i></a>
+              <a href="/post/<%= post.id %>/delete" class="btn btn-danger" title="hapus postingan"><i
+                  class="fas fa-trash-can"></i></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Dibuat pada <%= new Date(post.createdAt).toLocaleString() %></small>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Modal Change Image -->
-      <div class="modal fade" id="changeImageModal-<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form action="/post/update/image" method="post" enctype="multipart/form-data">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ubah Gambar Untuk: <%= post.title %></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" name="postId" value="<%= post.id %>">
-                <input type="hidden" name="currentImage" value="<%= post.image %>">
-                <div class="input-group mb-3" data-aos="fade-in">
-                  <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
-                  <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
+        <!-- Modal Change Image -->
+        <div class="modal fade" id="changeImageModal-<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form action="/post/update/image" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ubah Gambar Untuk: <%= post.title %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-              </div>
-            </form>
+                <div class="modal-body">
+                  <input type="hidden" name="postId" value="<%= post.id %>">
+                  <input type="hidden" name="currentImage" value="<%= post.image %>">
+                  <div class="input-group mb-3" data-aos="fade-in">
+                    <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
+                    <label class="input-group-text" for="image" aria-label="unggah gambar">Gambar</label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
+        <% }) %>
       </div>
-      <% }) %>
+      <!-- end of post card -->
+      <% } %>
     </div>
-    <!-- end of post card -->
-
-  </div>
 </main>
 
 
